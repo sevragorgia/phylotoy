@@ -137,8 +137,7 @@ std::vector<std::string>* Tree::CollectTreeNodesInfoRecursively(){
 
 /**
  * This method returns information on the nodes currently included in the tree.
- * It recursively traverses the tree starting from the root node and asks each node for its info as a string that is stored on a vector of 
- * strings.
+ * It used the tree_nodes vector of Node pointer to iteratively retrieve the Node information 
  * 
  * @returns a vector of strings
  */
@@ -171,20 +170,17 @@ std::vector<std::string>* Tree::CollectTreeNodesInfoIteratively(){
 }
 
 /**
- * In order to update the list of vector nodes we recursively get pointers to all the nodes in the tree
+ * In case we need to update the list of Nodes in the tree_nodes list, this method should provide a way to get pointers to all the nodes
+ * in the tree recursively
+ * 
  */
 
-std::vector<Node*> Tree::GetTreeNodeVector(){
-  
-  std::vector<Node*> tree_nodes;
-  
+void Tree::GetTreeNodeVector(){
+   
   std::cerr << "at tree root\n";
-  tree_nodes = current_root->GetNodePointer(tree_nodes);
-  
-  return tree_nodes;
+  current_root->GetNodePointer(&tree_nodes);
   
 }
-
 
 
 /**

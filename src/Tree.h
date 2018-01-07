@@ -48,7 +48,7 @@ public:
     std::vector<Node*> GetTreeNodes();
     void AddToNodeVector(Node* node);
     
-    std::vector<Node*> GetTreeNodeVector();
+    void GetTreeNodeVector();
     
     void CreateStarTree(std::vector<std::string>* alignment);
     

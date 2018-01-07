@@ -51,7 +51,7 @@ public:
     
     void CreateBifurcatingNode(std::vector<Node*>, int* calls, std::vector<Node*>* tree_nodes);
     
-    std::vector<Node*> GetNodePointer(std::vector<Node*> tree_nodes);
+    void GetNodePointer(std::vector<Node*>* tree_nodes);
     
     std::vector<std::string>* GetNodeInfo(std::vector<std::string>* collected_node_info);
     

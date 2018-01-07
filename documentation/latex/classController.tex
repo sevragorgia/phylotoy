@@ -267,20 +267,33 @@ Definition at line 124 of file Controller.\+cpp.
 144   
 145   \textcolor{comment}{//phylo\_tree.CreateStarTree(alignment);}
 146   
-147   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"collecting node info\(\backslash\)n"});
-148   std::vector<std::string>* nodes\_info = phylo\_tree.\hyperlink{classTree_a369b39fd2a571e0c4dfdadbdf4364c07}{CollectTreeNodesInfo}();
+147   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"collecting node info recursively\(\backslash\)n"});
+148   std::vector<std::string>* nodes\_info\_recursively = phylo\_tree.
+      \hyperlink{classTree_af09073cc7b7166d16213614b624f3388}{CollectTreeNodesInfoRecursively}();
 149   
-150   \textcolor{keywordflow}{while}(!nodes\_info->empty()) \{
+150   \textcolor{keywordflow}{while}(!nodes\_info\_recursively->empty()) \{
 151     
 152     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"in while\(\backslash\)n"});
-153     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(nodes\_info->back());
+153     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(nodes\_info\_recursively->back());
 154     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"\(\backslash\)n"});
 155     
-156     nodes\_info->pop\_back();
+156     nodes\_info\_recursively->pop\_back();
 157   \}
 158   
-159   
-160 \}
+159   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"collecting node info iteratively\(\backslash\)n"});
+160   std::vector<std::string>* nodes\_info\_iteratively = phylo\_tree.
+      \hyperlink{classTree_a9a6309402407a051b346e779169f2ffc}{CollectTreeNodesInfoIteratively}();
+161   
+162   \textcolor{keywordflow}{while}(!nodes\_info\_iteratively->empty()) \{
+163     
+164     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"in while\(\backslash\)n"});
+165     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(nodes\_info\_iteratively->back());
+166     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"\(\backslash\)n"});
+167     
+168     nodes\_info\_iteratively->pop\_back();
+169   \}
+170   
+171 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a67b2357dbc00faba0f6557f3660e8711}\label{classController_a67b2357dbc00faba0f6557f3660e8711}} 
 \index{Controller@{Controller}!Set\+Alignment\+File\+Path@{Set\+Alignment\+File\+Path}}

@@ -17,6 +17,10 @@ void \hyperlink{classNode_af4ba012237c10c42f2118e629633b844}{Set\+Species\+Name}
 \item 
 std\+::string \hyperlink{classNode_a9787fabf589f2b0764482b41091f775b}{Get\+Species\+Name} ()
 \item 
+void \hyperlink{classNode_a6f2acc7b954108a6fe266838fce50ef6}{Set\+Index} (int node\+\_\+index)
+\item 
+int \hyperlink{classNode_a90ff01054aa65ec8338b78a792ea4bfe}{Get\+Index} ()
+\item 
 void \hyperlink{classNode_a89bff92e3930d521439395ccf332418f}{Set\+Is\+Tip} (bool tip)
 \item 
 bool \hyperlink{classNode_ac2902fa01a9ebbeb692fe16d75bd6be2}{Get\+Is\+Tip} ()
@@ -35,7 +39,9 @@ void \hyperlink{classNode_a7480924f7879b04fe8c787f42ee888fe}{Set\+Child\+Vector}
 \item 
 std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$ $>$ \hyperlink{classNode_a9b9823315fd95dcd24aac97316de2859}{Get\+Child\+Vector} ()
 \item 
-void \hyperlink{classNode_a73e4640e16847b3c1b655930c193d03b}{Create\+Bifurcating\+Node} (std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$, int $\ast$calls)
+void \hyperlink{classNode_a188e5d00d54887dc3490837f2f025abf}{Create\+Bifurcating\+Node} (std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$, int $\ast$calls, std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$ $\ast$tree\+\_\+nodes)
+\item 
+void \hyperlink{classNode_a8e58dc16fc38e2076c7ddbe5b9f04177}{Get\+Node\+Pointer} (std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$ $\ast$tree\+\_\+nodes)
 \item 
 std\+::vector$<$ std\+::string $>$ $\ast$ \hyperlink{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}{Get\+Node\+Info} (std\+::vector$<$ std\+::string $>$ $\ast$collected\+\_\+node\+\_\+info)
 \end{DoxyCompactItemize}
@@ -74,78 +80,84 @@ Definition at line 14 of file Node.\+cpp.
 
 
 
-Definition at line 80 of file Node.\+cpp.
+Definition at line 92 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-80                                           \{
-81   
-82   child\_nodes.push\_back(child);
-83   
-84 \}
+92                                           \{
+93   
+94   child\_nodes.push\_back(child);
+95   
+96 \}
 \end{DoxyCode}
-\mbox{\Hypertarget{classNode_a73e4640e16847b3c1b655930c193d03b}\label{classNode_a73e4640e16847b3c1b655930c193d03b}} 
+\mbox{\Hypertarget{classNode_a188e5d00d54887dc3490837f2f025abf}\label{classNode_a188e5d00d54887dc3490837f2f025abf}} 
 \index{Node@{Node}!Create\+Bifurcating\+Node@{Create\+Bifurcating\+Node}}
 \index{Create\+Bifurcating\+Node@{Create\+Bifurcating\+Node}!Node@{Node}}
 \subsubsection{\texorpdfstring{Create\+Bifurcating\+Node()}{CreateBifurcatingNode()}}
-{\footnotesize\ttfamily void Node\+::\+Create\+Bifurcating\+Node (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$}]{tip\+\_\+nodes,  }\item[{int $\ast$}]{calls }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Node\+::\+Create\+Bifurcating\+Node (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$}]{tip\+\_\+nodes,  }\item[{int $\ast$}]{current\+\_\+node\+\_\+index,  }\item[{std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$ $\ast$}]{tree\+\_\+nodes }\end{DoxyParamCaption})}
+
+We create the tree as follows\+: the current node has no children, i.\+e. the size of the vector child\+\_\+nodes is 0. We insert the tip node as a child of this node, sending a reference of it to the child node for it to have a pointer to its parent node. Once this is done, we create a new internode, set this node as its parent and add it to the child\+\_\+nodes vector of the current node. Then we recursively call this method on the new internode but only if we still have more than 1 tip nodes left. If not, we add the last tip node to the current internode.
+
+After this happens the vector of tip nodes should be empty and the method returns.
 
 
+\begin{DoxyParams}{Parameters}
+{\em tip\+\_\+nodes} & a std\+::vector of \hyperlink{classNode}{Node} pointers containing the tip nodes \\
+\hline
+{\em current\+\_\+node\+\_\+index} & an int pointer to be used to allocate each node with an index. \\
+\hline
+{\em tree\+\_\+nodes} & a pointer to a std\+:vector of \hyperlink{classNode}{Node} pointers that contains all nodes in a tree. \\
+\hline
+\end{DoxyParams}
+if only one last tip node is left. We can add it to the current internode. This internode should only have 1 descendent tip.
 
-Definition at line 98 of file Node.\+cpp.
+Definition at line 128 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-98                                                                       \{
-99   
-100   std::cerr << \textcolor{stringliteral}{"creating bifurcating node\(\backslash\)n"};
-101   
-102   *calls = *calls +1;
-103   
-104   \textcolor{keywordflow}{if}(!tip\_nodes.empty())\{
-105     
-106     \hyperlink{classNode}{Node}* tip\_node\_to\_insert = tip\_nodes.back();
-107         
-108     \textcolor{comment}{/* We create the tree as follows:}
-109 \textcolor{comment}{     * 1. the current node has no children, i.e. the size of the vector child\_nodes is 0.}
-110 \textcolor{comment}{     * We insert the tip node as a child of this node, sending a reference of it to the child node to point
-       to its parent node.}
-111 \textcolor{comment}{     * Once this is done, we create a new internode, set this node as its parent and add it to the
-       child\_nodes vector of the current node.}
-112 \textcolor{comment}{     * Then we recursively call this method on the new internode but only if we still have more than 1 tip
-       nodes left.}
-113 \textcolor{comment}{     * }
-114 \textcolor{comment}{     */}
-115     
-116     std::cerr << \textcolor{stringliteral}{"inserting tip: "} << tip\_node\_to\_insert->\hyperlink{classNode_a9787fabf589f2b0764482b41091f775b}{GetSpeciesName}() << \textcolor{stringliteral}{"\(\backslash\)n"};
-117     tip\_node\_to\_insert->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
-118     this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(tip\_node\_to\_insert);
-119     tip\_nodes.pop\_back();\textcolor{comment}{//this deletes the last element of the array}
-120     
-121     \textcolor{keywordflow}{if}(tip\_nodes.size() > 1)\{
-122       
-123       std::cerr << \textcolor{stringliteral}{"inserting new internode "} << *calls << \textcolor{stringliteral}{"\(\backslash\)n"};
-124       
-125       \hyperlink{classNode}{Node}* internode = \textcolor{keyword}{new} \hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node}();
-126       internode->\hyperlink{classNode_a89bff92e3930d521439395ccf332418f}{SetIsTip}(\textcolor{keyword}{false});
-127       internode->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
-128       internode->\hyperlink{classNode_af4ba012237c10c42f2118e629633b844}{SetSpeciesName}(std::to\_string(*calls));
-129       this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(internode);
-130     
-131       internode->\hyperlink{classNode_a73e4640e16847b3c1b655930c193d03b}{CreateBifurcatingNode}(tip\_nodes, calls);
-132       
-133     \}\textcolor{keywordflow}{else}\{
-134       \textcolor{comment}{//there is only one tip left, this we can add to the current internode because we only added 1 tip to
-       it and only 1 remains to be added}
-135       
-136       std::cerr << \textcolor{stringliteral}{"inserting last tip: "} << tip\_node\_to\_insert->\hyperlink{classNode_a9787fabf589f2b0764482b41091f775b}{GetSpeciesName}() << \textcolor{stringliteral}{"\(\backslash\)n"};
-137       tip\_node\_to\_insert->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
-138       this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(tip\_node\_to\_insert);
-139       tip\_nodes.pop\_back();\textcolor{comment}{//this deletes the last element of the array}
-140       
-141     \}
-142   \}
-143 \}
+128                                                                                                            
+            \{
+129   
+130   std::cerr << \textcolor{stringliteral}{"creating bifurcating node "} << tip\_nodes.size() << \textcolor{stringliteral}{"\(\backslash\)n"};
+131  
+132   \textcolor{keywordflow}{if}(!tip\_nodes.empty())\{
+133     
+134     \hyperlink{classNode}{Node}* tip\_node\_to\_insert = tip\_nodes.back();
+135     tip\_nodes.pop\_back();\textcolor{comment}{//this deletes the last element of the array}
+136     
+137     std::cerr << \textcolor{stringliteral}{"inserting tip: "} << tip\_node\_to\_insert->\hyperlink{classNode_a9787fabf589f2b0764482b41091f775b}{GetSpeciesName}() << \textcolor{stringliteral}{"\(\backslash\)n"};
+138     tip\_node\_to\_insert->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
+139     this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(tip\_node\_to\_insert);
+140     tree\_nodes->push\_back(tip\_node\_to\_insert);
+141     
+142     \textcolor{keywordflow}{if}(tip\_nodes.size() == 1)\{
+143       
+150       tip\_node\_to\_insert = tip\_nodes.back();
+151       tip\_nodes.pop\_back();\textcolor{comment}{//this deletes the last element of the array}
+152       
+153       std::cerr << \textcolor{stringliteral}{"inserting last tip: "} << tip\_node\_to\_insert->\hyperlink{classNode_a9787fabf589f2b0764482b41091f775b}{GetSpeciesName}() << \textcolor{stringliteral}{"\(\backslash\)n"};
+154       
+155       tip\_node\_to\_insert->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
+156       this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(tip\_node\_to\_insert);
+157       tree\_nodes->push\_back(tip\_node\_to\_insert);
+158       
+159     \}\textcolor{keywordflow}{else}\{
+160       
+161       std::cerr << \textcolor{stringliteral}{"inserting new internode "} << *current\_node\_index << \textcolor{stringliteral}{"\(\backslash\)n"};
+162       
+163       \hyperlink{classNode}{Node}* internode = \textcolor{keyword}{new} \hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node}();
+164       internode->\hyperlink{classNode_a89bff92e3930d521439395ccf332418f}{SetIsTip}(\textcolor{keyword}{false});
+165       internode->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
+166       internode->\hyperlink{classNode_a6f2acc7b954108a6fe266838fce50ef6}{SetIndex}(*current\_node\_index);
+167       this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(internode);
+168       tree\_nodes->push\_back(internode);
+169       
+170       *current\_node\_index = *current\_node\_index + 1;\textcolor{comment}{//increase the index counter}
+171       internode->\hyperlink{classNode_a188e5d00d54887dc3490837f2f025abf}{CreateBifurcatingNode}(tip\_nodes, current\_node\_index, tree\_nodes);
+172       
+173     \}
+174   \}
+175 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classNode_a9b9823315fd95dcd24aac97316de2859}\label{classNode_a9b9823315fd95dcd24aac97316de2859}} 
 \index{Node@{Node}!Get\+Child\+Vector@{Get\+Child\+Vector}}
@@ -155,15 +167,33 @@ Definition at line 98 of file Node.\+cpp.
 
 
 
-Definition at line 92 of file Node.\+cpp.
+Definition at line 104 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-92                                      \{
-93   
-94   \textcolor{keywordflow}{return} child\_nodes;
-95   
-96 \}
+104                                      \{
+105   
+106   \textcolor{keywordflow}{return} child\_nodes;
+107   
+108 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a90ff01054aa65ec8338b78a792ea4bfe}\label{classNode_a90ff01054aa65ec8338b78a792ea4bfe}} 
+\index{Node@{Node}!Get\+Index@{Get\+Index}}
+\index{Get\+Index@{Get\+Index}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Index()}{GetIndex()}}
+{\footnotesize\ttfamily int Node\+::\+Get\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 60 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+60                   \{
+61   
+62   \textcolor{keywordflow}{return} index;
+63   
+64 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classNode_ac2902fa01a9ebbeb692fe16d75bd6be2}\label{classNode_ac2902fa01a9ebbeb692fe16d75bd6be2}} 
 \index{Node@{Node}!Get\+Is\+Tip@{Get\+Is\+Tip}}
@@ -191,15 +221,15 @@ Definition at line 48 of file Node.\+cpp.
 
 
 
-Definition at line 61 of file Node.\+cpp.
+Definition at line 73 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-61                                       \{
-62   
-63   \textcolor{keywordflow}{return} length\_of\_subtending\_branch;
-64   
-65 \}
+73                                       \{
+74   
+75   \textcolor{keywordflow}{return} length\_of\_subtending\_branch;
+76   
+77 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}\label{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}} 
 \index{Node@{Node}!Get\+Node\+Info@{Get\+Node\+Info}}
@@ -209,44 +239,93 @@ Definition at line 61 of file Node.\+cpp.
 
 
 
-Definition at line 145 of file Node.\+cpp.
+Definition at line 210 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-145                                                                                 \{
-146   
-147   \textcolor{keywordflow}{if}(child\_nodes.empty()) \{
-148     
-149     std::cerr << \textcolor{stringliteral}{"empty node vector\(\backslash\)n"};
-150     
-151     \textcolor{comment}{//add the species name and sequence to the vector collecting the node information}
-152     std::string node\_info = species\_name + \textcolor{charliteral}{' '} + sequence;
-153     
-154     std::cerr << \textcolor{stringliteral}{"adding "} << node\_info << \textcolor{stringliteral}{"to info vector\(\backslash\)n"};
-155     
-156     collected\_node\_info->push\_back(node\_info);
-157     
-158     
-159   \}\textcolor{keywordflow}{else} \{
-160     
-161     std::cerr << \textcolor{stringliteral}{"recursively calling nodes\(\backslash\)n"};
-162     \textcolor{comment}{//for each child node, call this function.}
-163     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} child : child\_nodes) \{
-164       
-165       std::cerr << \textcolor{stringliteral}{"in for\(\backslash\)n"}; 
-166       child->GetNodeInfo(collected\_node\_info);
-167       
-168     \}
-169     
-170     std::cerr << \textcolor{stringliteral}{"back at internode \(\backslash\)n"};
-171     
-172     \textcolor{comment}{//add your own info if needed}
-173     
-174   \}
-175   
-176   \textcolor{keywordflow}{return} collected\_node\_info;
-177   
-178 \}
+210                                                                                 \{
+211   
+212   \textcolor{keywordflow}{if}(child\_nodes.empty()) \{
+213     
+214     std::cerr << \textcolor{stringliteral}{"empty child node vector\(\backslash\)n"};
+215     
+216     \textcolor{comment}{//add the tip node index, species name and sequence to the vector collecting the node information}
+217     std::string node\_info = std::to\_string(index) + \textcolor{charliteral}{' '} + species\_name + \textcolor{charliteral}{' '} + sequence;
+218     
+219     std::cerr << \textcolor{stringliteral}{"adding "} << node\_info << \textcolor{stringliteral}{" to info vector\(\backslash\)n"};
+220     
+221     collected\_node\_info->push\_back(node\_info);
+222     
+223     
+224   \}\textcolor{keywordflow}{else} \{
+225     
+226     std::cerr << \textcolor{stringliteral}{"recursively calling nodes "} << child\_nodes.size() << \textcolor{stringliteral}{"\(\backslash\)n"};
+227     \textcolor{comment}{//for each child node, call this function.}
+228     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} child : child\_nodes) \{
+229       
+230       std::cerr << \textcolor{stringliteral}{"in for\(\backslash\)n"}; 
+231       child->GetNodeInfo(collected\_node\_info);
+232       
+233     \}
+234     
+235     std::cerr << \textcolor{stringliteral}{"back at internode \(\backslash\)n"};
+236     
+237     \textcolor{comment}{//add internode index to the vector collecting the node information}
+238     std::string node\_info = std::to\_string(index);
+239     
+240     std::cerr << \textcolor{stringliteral}{"adding "} << node\_info << \textcolor{stringliteral}{" to info vector\(\backslash\)n"};
+241     
+242     collected\_node\_info->push\_back(node\_info);
+243     
+244     
+245   \}
+246   
+247   \textcolor{keywordflow}{return} collected\_node\_info;
+248   
+249 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a8e58dc16fc38e2076c7ddbe5b9f04177}\label{classNode_a8e58dc16fc38e2076c7ddbe5b9f04177}} 
+\index{Node@{Node}!Get\+Node\+Pointer@{Get\+Node\+Pointer}}
+\index{Get\+Node\+Pointer@{Get\+Node\+Pointer}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Node\+Pointer()}{GetNodePointer()}}
+{\footnotesize\ttfamily void Node\+::\+Get\+Node\+Pointer (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$ $\ast$}]{tree\+\_\+nodes }\end{DoxyParamCaption})}
+
+
+
+Definition at line 178 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+178                                                      \{
+179   
+180   \textcolor{keywordflow}{if}(child\_nodes.empty()) \{
+181     
+182     std::cerr << \textcolor{stringliteral}{"empty child node vector\(\backslash\)n"};
+183     
+184     std::cerr << \textcolor{stringliteral}{"adding node "} << index << \textcolor{stringliteral}{" to node ref vector\(\backslash\)n"};
+185     
+186     tree\_nodes->push\_back(\textcolor{keyword}{this});
+187     
+188   \}\textcolor{keywordflow}{else} \{
+189     
+190     std::cerr << \textcolor{stringliteral}{"recursively calling nodes"} << child\_nodes.size() << \textcolor{stringliteral}{"\(\backslash\)n"};
+191     \textcolor{comment}{//for each child node, call this function.}
+192     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} child : child\_nodes) \{
+193       
+194       std::cerr << \textcolor{stringliteral}{"in for\(\backslash\)n"}; 
+195       child->GetNodePointer(tree\_nodes);
+196       
+197     \}
+198     
+199     std::cerr << \textcolor{stringliteral}{"back at internode \(\backslash\)n"};
+200     
+201     std::cerr << \textcolor{stringliteral}{"adding node "} << index << \textcolor{stringliteral}{" to node ref vector\(\backslash\)n"};
+202     
+203     tree\_nodes->push\_back(\textcolor{keyword}{this});
+204     
+205   \}
+206   
+207 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classNode_a032d93c17743138203c77c721edfdae6}\label{classNode_a032d93c17743138203c77c721edfdae6}} 
 \index{Node@{Node}!Get\+Parent\+Node@{Get\+Parent\+Node}}
@@ -256,15 +335,15 @@ Definition at line 145 of file Node.\+cpp.
 
 
 
-Definition at line 73 of file Node.\+cpp.
+Definition at line 85 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-73                          \{
-74   
-75   \textcolor{keywordflow}{return} parent\_node;
-76   
-77 \}
+85                          \{
+86   
+87   \textcolor{keywordflow}{return} parent\_node;
+88   
+89 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classNode_a69f309f68de4f08e950a15ae79571ec0}\label{classNode_a69f309f68de4f08e950a15ae79571ec0}} 
 \index{Node@{Node}!Get\+Sequence@{Get\+Sequence}}
@@ -310,15 +389,33 @@ Definition at line 36 of file Node.\+cpp.
 
 
 
-Definition at line 86 of file Node.\+cpp.
+Definition at line 98 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-86                                                 \{
-87   
-88   child\_nodes = childs;
-89   
-90 \}
+98                                                 \{
+99   
+100   child\_nodes = childs;
+101   
+102 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a6f2acc7b954108a6fe266838fce50ef6}\label{classNode_a6f2acc7b954108a6fe266838fce50ef6}} 
+\index{Node@{Node}!Set\+Index@{Set\+Index}}
+\index{Set\+Index@{Set\+Index}!Node@{Node}}
+\subsubsection{\texorpdfstring{Set\+Index()}{SetIndex()}}
+{\footnotesize\ttfamily void Node\+::\+Set\+Index (\begin{DoxyParamCaption}\item[{int}]{node\+\_\+index }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+54                                  \{
+55   
+56   index = node\_index;
+57   
+58 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classNode_a89bff92e3930d521439395ccf332418f}\label{classNode_a89bff92e3930d521439395ccf332418f}} 
 \index{Node@{Node}!Set\+Is\+Tip@{Set\+Is\+Tip}}
@@ -346,15 +443,15 @@ Definition at line 42 of file Node.\+cpp.
 
 
 
-Definition at line 55 of file Node.\+cpp.
+Definition at line 67 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-55                                                         \{
-56   
-57   length\_of\_subtending\_branch = branch\_length;
-58   
-59 \}
+67                                                         \{
+68   
+69   length\_of\_subtending\_branch = branch\_length;
+70   
+71 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classNode_acb22b8f28ca70e1316a6bafc375ee352}\label{classNode_acb22b8f28ca70e1316a6bafc375ee352}} 
 \index{Node@{Node}!Set\+Parent\+Node@{Set\+Parent\+Node}}
@@ -364,15 +461,15 @@ Definition at line 55 of file Node.\+cpp.
 
 
 
-Definition at line 67 of file Node.\+cpp.
+Definition at line 79 of file Node.\+cpp.
 
 
 \begin{DoxyCode}
-67                                     \{
-68   
-69   parent\_node = parent;
-70   
-71 \}
+79                                     \{
+80   
+81   parent\_node = parent;
+82   
+83 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classNode_af92559fbef1938022d59b2902703afaa}\label{classNode_af92559fbef1938022d59b2902703afaa}} 
 \index{Node@{Node}!Set\+Sequence@{Set\+Sequence}}
@@ -407,7 +504,7 @@ Definition at line 29 of file Node.\+cpp.
 \begin{DoxyCode}
 29                                        \{
 30   
-31   std::cerr << \textcolor{stringliteral}{"setting species name\(\backslash\)n"};
+31   std::cerr << \textcolor{stringliteral}{"setting species name "} << name <<\textcolor{stringliteral}{"\(\backslash\)n"};
 32   species\_name = name;
 33   
 34 \}
