@@ -1,0 +1,236 @@
+\hypertarget{classTree}{}\section{Tree Class Reference}
+\label{classTree}\index{Tree@{Tree}}
+
+
+{\ttfamily \#include $<$Tree.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classTree_ad376a7c639d857312f5de2ef47482f68}{Tree} ()
+\item 
+void \hyperlink{classTree_aa16a8485326ce51d6d7324f23066eb27}{Set\+Length} (float length)
+\item 
+float \hyperlink{classTree_a5812392cfc9ed68d1fc3713d708a5e8f}{Get\+Length} ()
+\item 
+void \hyperlink{classTree_ae592faa2c1f2da3cc1157bd9a4b884b5}{Set\+Root} (\hyperlink{classNode}{Node} $\ast$root\+\_\+node)
+\item 
+\hyperlink{classNode}{Node} $\ast$ \hyperlink{classTree_a866593b4b067b38394a090e0d57b132f}{Get\+Root} ()
+\item 
+void \hyperlink{classTree_ac446f0f8211fcc033502690a9a164e95}{Create\+Star\+Tree} (std\+::vector$<$ std\+::string $>$ $\ast$alignment)
+\item 
+void \hyperlink{classTree_ac456dedd5e42bb0fea807aeb526e5a93}{Create\+Bifurcating\+Tree} (std\+::vector$<$ std\+::string $>$ $\ast$alignment)
+\item 
+std\+::vector$<$ std\+::string $>$ $\ast$ \hyperlink{classTree_a369b39fd2a571e0c4dfdadbdf4364c07}{Collect\+Tree\+Nodes\+Info} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Objects of the class \hyperlink{classTree}{Tree} represent phylogenetic trees. These trees are (1) unrooted (the root node used in the code is just an internode of the tree, (2) can be initialized as start trees, (3) can contain polytomies, or (4) can be bifurcating.
+
+This class provide a number of methods to manipulate the tree. For instance, re-\/rooting the tree. It also provides methods to alter the tree topology using Nearest-\/neighbor interchange (N\+NI) or subtree pruning and regraphting (S\+PR).
+
+A number of attributes of the tree provide short-\/cuts to make modifying the tree topology or the length of the tree\textquotesingle{}s branches easy. For instance, \hyperlink{classTree}{Tree} objects store pointers to all of their nodes and to the current root. This makes easy to rearrange the tree during M\+C\+MC.
+
+The \hyperlink{classTree}{Tree} Class is also in charge of proposing all modifications to tree topology and branch length. 
+
+Definition at line 19 of file Tree.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTree_ad376a7c639d857312f5de2ef47482f68}\label{classTree_ad376a7c639d857312f5de2ef47482f68}} 
+\index{Tree@{Tree}!Tree@{Tree}}
+\index{Tree@{Tree}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Tree()}{Tree()}}
+{\footnotesize\ttfamily Tree\+::\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+12           \{
+13   
+14   current\_root =  \textcolor{keyword}{new} \hyperlink{classNode}{Node};
+15   current\_root->\hyperlink{classNode_a89bff92e3930d521439395ccf332418f}{SetIsTip}(\textcolor{keyword}{false});
+16   
+17 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTree_a369b39fd2a571e0c4dfdadbdf4364c07}\label{classTree_a369b39fd2a571e0c4dfdadbdf4364c07}} 
+\index{Tree@{Tree}!Collect\+Tree\+Nodes\+Info@{Collect\+Tree\+Nodes\+Info}}
+\index{Collect\+Tree\+Nodes\+Info@{Collect\+Tree\+Nodes\+Info}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Collect\+Tree\+Nodes\+Info()}{CollectTreeNodesInfo()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ $\ast$ Tree\+::\+Collect\+Tree\+Nodes\+Info (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method returns information on the nodes currently included in the tree. It recursively traverses the tree starting from the root node and asks each node for its info as a string that is stored on a vector of strings.
+
+\begin{DoxyReturn}{Returns}
+a vector of strings 
+\end{DoxyReturn}
+
+
+Definition at line 89 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+89                                                 \{
+90   
+91   std::vector<std::string>* tree\_nodes\_info = \textcolor{keyword}{new} std::vector<std::string>;
+92   
+93   std::cerr << \textcolor{stringliteral}{"at tree root\(\backslash\)n"};
+94   tree\_nodes\_info = current\_root->\hyperlink{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}{GetNodeInfo}(tree\_nodes\_info);
+95   
+96   \textcolor{keywordflow}{return} tree\_nodes\_info;
+97 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classTree_ac456dedd5e42bb0fea807aeb526e5a93}\label{classTree_ac456dedd5e42bb0fea807aeb526e5a93}} 
+\index{Tree@{Tree}!Create\+Bifurcating\+Tree@{Create\+Bifurcating\+Tree}}
+\index{Create\+Bifurcating\+Tree@{Create\+Bifurcating\+Tree}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Create\+Bifurcating\+Tree()}{CreateBifurcatingTree()}}
+{\footnotesize\ttfamily void Tree\+::\+Create\+Bifurcating\+Tree (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{alignment }\end{DoxyParamCaption})}
+
+This method creates a bifurcating tree. This method creates as many internodes as required to yield a bifurcating tree.
+
+
+\begin{DoxyParams}{Parameters}
+{\em alignment} & is a sequence alignment stored on a vector of strings containing species names and sequencesseparated by an empty space. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 71 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+71                                                                \{
+72   
+73   std::cerr << \textcolor{stringliteral}{"Creating bifurcating tree\(\backslash\)n"};
+74   
+75   \textcolor{keywordtype}{int} recursive\_calls = 0;
+76   
+77   \textcolor{comment}{//we initialize the tip nodes using the alignment provided by the user}
+78   current\_root->\hyperlink{classNode_a73e4640e16847b3c1b655930c193d03b}{CreateBifurcatingNode}(this->InitializeTipNodes(alignment), &
+      recursive\_calls);
+79   
+80 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classTree_ac446f0f8211fcc033502690a9a164e95}\label{classTree_ac446f0f8211fcc033502690a9a164e95}} 
+\index{Tree@{Tree}!Create\+Star\+Tree@{Create\+Star\+Tree}}
+\index{Create\+Star\+Tree@{Create\+Star\+Tree}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Create\+Star\+Tree()}{CreateStarTree()}}
+{\footnotesize\ttfamily void Tree\+::\+Create\+Star\+Tree (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{alignment }\end{DoxyParamCaption})}
+
+This method creates a star tree. This tree adds all the tip nodes in one alignment to the root node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em alignment} & is a sequence alignment with species names and sequences separated by an empty space. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 49 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+49                                                         \{
+50   
+51   std::cerr << \textcolor{stringliteral}{"Creating star tree\(\backslash\)n"};
+52   
+53   \textcolor{comment}{//first we send the alignment to our private tip node initializer}
+54   current\_root->\hyperlink{classNode_a7480924f7879b04fe8c787f42ee888fe}{SetChildVector}(this->InitializeTipNodes(alignment));
+55   
+56   \textcolor{comment}{//once all tips have been added as childs to the root, the root sends a pointer to him self to each of
+       the child nodes.}
+57   
+58   \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} child : current\_root->\hyperlink{classNode_a9b9823315fd95dcd24aac97316de2859}{GetChildVector}())\{
+59     
+60     child->SetParentNode(current\_root);
+61     \textcolor{comment}{//we also need to set the length of the subtending branch leading to the parent}
+62   \}
+63   
+64 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classTree_a5812392cfc9ed68d1fc3713d708a5e8f}\label{classTree_a5812392cfc9ed68d1fc3713d708a5e8f}} 
+\index{Tree@{Tree}!Get\+Length@{Get\+Length}}
+\index{Get\+Length@{Get\+Length}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Get\+Length()}{GetLength()}}
+{\footnotesize\ttfamily float Tree\+::\+Get\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+25                      \{
+26   
+27   \textcolor{keywordflow}{return} length;
+28   
+29 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classTree_a866593b4b067b38394a090e0d57b132f}\label{classTree_a866593b4b067b38394a090e0d57b132f}} 
+\index{Tree@{Tree}!Get\+Root@{Get\+Root}}
+\index{Get\+Root@{Get\+Root}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Get\+Root()}{GetRoot()}}
+{\footnotesize\ttfamily \hyperlink{classNode}{Node} $\ast$ Tree\+::\+Get\+Root (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 38 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+38                    \{
+39   
+40   \textcolor{keywordflow}{return} current\_root;
+41   
+42 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classTree_aa16a8485326ce51d6d7324f23066eb27}\label{classTree_aa16a8485326ce51d6d7324f23066eb27}} 
+\index{Tree@{Tree}!Set\+Length@{Set\+Length}}
+\index{Set\+Length@{Set\+Length}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Set\+Length()}{SetLength()}}
+{\footnotesize\ttfamily void Tree\+::\+Set\+Length (\begin{DoxyParamCaption}\item[{float}]{length }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+19                                 \{
+20 
+21     length = length;
+22   
+23 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classTree_ae592faa2c1f2da3cc1157bd9a4b884b5}\label{classTree_ae592faa2c1f2da3cc1157bd9a4b884b5}} 
+\index{Tree@{Tree}!Set\+Root@{Set\+Root}}
+\index{Set\+Root@{Set\+Root}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Set\+Root()}{SetRoot()}}
+{\footnotesize\ttfamily void Tree\+::\+Set\+Root (\begin{DoxyParamCaption}\item[{\hyperlink{classNode}{Node} $\ast$}]{root\+\_\+node }\end{DoxyParamCaption})}
+
+
+
+Definition at line 31 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+31                                  \{
+32   
+33   current\_root = root\_node;
+34   
+35 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sergio/\+Repos/phylotoy/src/\hyperlink{Tree_8h}{Tree.\+h}\item 
+/home/sergio/\+Repos/phylotoy/src/\hyperlink{Tree_8cpp}{Tree.\+cpp}\end{DoxyCompactItemize}

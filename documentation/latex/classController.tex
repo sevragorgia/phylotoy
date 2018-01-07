@@ -1,0 +1,344 @@
+\hypertarget{classController}{}\section{Controller Class Reference}
+\label{classController}\index{Controller@{Controller}}
+
+
+{\ttfamily \#include $<$Controller.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classController_a95c56822d667e94b031451729ce069a9}{Controller} ()
+\item 
+void \hyperlink{classController_a1438b54d76df7239f361bd93dfbf9246}{Set\+Random\+Seed} (int seed)
+\item 
+int \hyperlink{classController_acee3589ec24f9a9432c07f2fe77f005b}{Get\+Random\+Seed} ()
+\item 
+int \hyperlink{classController_a0a7005db27b63a01f4917134da0ae600}{Check\+Random\+Seed} ()
+\item 
+void \hyperlink{classController_a67b2357dbc00faba0f6557f3660e8711}{Set\+Alignment\+File\+Path} (std\+::string path)
+\item 
+std\+::string \hyperlink{classController_a5a9cf95b7410c4ca65036b8204856cd0}{Get\+Alignment\+File\+Path} ()
+\item 
+std\+::string \hyperlink{classController_a79fd3abba4177d597d571a97032c6432}{Check\+Alignment\+File\+Path} ()
+\item 
+void \hyperlink{classController_aa122ac902c36eeb2889e12558d4ad087}{Set\+Chain\+Name} (std\+::string name)
+\item 
+std\+::string \hyperlink{classController_a62139e7d2c85afb9046dd47528882089}{Get\+Chain\+Name} ()
+\item 
+std\+::string \hyperlink{classController_a207236dbade67acf265531bfa7769056}{Check\+Chain\+Name} ()
+\item 
+void \hyperlink{classController_a1307438a1590b0deff238e4ee46aaed3}{Check\+C\+L\+I\+Options} ()
+\item 
+void \hyperlink{classController_a17abb2cec6c0109e9b2df3cdc082eaad}{Run} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 14 of file Controller.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classController_a95c56822d667e94b031451729ce069a9}\label{classController_a95c56822d667e94b031451729ce069a9}} 
+\index{Controller@{Controller}!Controller@{Controller}}
+\index{Controller@{Controller}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Controller()}{Controller()}}
+{\footnotesize\ttfamily Controller\+::\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+14                       \{
+15   
+16   
+17   
+18 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classController_a79fd3abba4177d597d571a97032c6432}\label{classController_a79fd3abba4177d597d571a97032c6432}} 
+\index{Controller@{Controller}!Check\+Alignment\+File\+Path@{Check\+Alignment\+File\+Path}}
+\index{Check\+Alignment\+File\+Path@{Check\+Alignment\+File\+Path}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Check\+Alignment\+File\+Path()}{CheckAlignmentFilePath()}}
+{\footnotesize\ttfamily std\+::string Controller\+::\+Check\+Alignment\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 59 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+59                                              \{
+60   
+61   \textcolor{comment}{//if the user forgot to set the ali path this char* will be null and we need to throw an exception}
+62   \textcolor{keywordflow}{if} (!alignment\_file\_path.length())\{
+63     
+64     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Alignment file path (option -i) was not set but is required"};
+65     
+66   \}\textcolor{keywordflow}{else}\{
+67   
+68     \textcolor{keywordflow}{return} alignment\_file\_path;
+69   \}
+70   
+71 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a207236dbade67acf265531bfa7769056}\label{classController_a207236dbade67acf265531bfa7769056}} 
+\index{Controller@{Controller}!Check\+Chain\+Name@{Check\+Chain\+Name}}
+\index{Check\+Chain\+Name@{Check\+Chain\+Name}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Check\+Chain\+Name()}{CheckChainName()}}
+{\footnotesize\ttfamily std\+::string Controller\+::\+Check\+Chain\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+86                                      \{
+87   
+88   \textcolor{comment}{//if the user forgot to set the chain name this char* will be null and we need to throw an exception}
+89   \textcolor{keywordflow}{if} (!chain\_name.length())\{
+90     
+91     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Chain name (option -c) was not set but is required"};
+92     
+93   \}\textcolor{keywordflow}{else}\{
+94   
+95     \textcolor{keywordflow}{return} chain\_name;
+96     
+97   \}
+98   
+99 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a1307438a1590b0deff238e4ee46aaed3}\label{classController_a1307438a1590b0deff238e4ee46aaed3}} 
+\index{Controller@{Controller}!Check\+C\+L\+I\+Options@{Check\+C\+L\+I\+Options}}
+\index{Check\+C\+L\+I\+Options@{Check\+C\+L\+I\+Options}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Check\+C\+L\+I\+Options()}{CheckCLIOptions()}}
+{\footnotesize\ttfamily void Controller\+::\+Check\+C\+L\+I\+Options (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 101 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+101                                  \{
+102   
+103   \textcolor{comment}{/*We need to check whether the necessary options were set*/}
+104   
+105   \textcolor{keywordflow}{try} \{
+106     
+107     this->\hyperlink{classController_a79fd3abba4177d597d571a97032c6432}{CheckAlignmentFilePath}();
+108     this->\hyperlink{classController_a207236dbade67acf265531bfa7769056}{CheckChainName}();
+109     this->\hyperlink{classController_a0a7005db27b63a01f4917134da0ae600}{CheckRandomSeed}();
+110         
+111   \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} \textcolor{keywordtype}{char}* exception) \{
+112     
+113     std::string what\_exception(exception);
+114     std::string error = \textcolor{stringliteral}{"Error: "} + what\_exception + \textcolor{stringliteral}{"\(\backslash\)n"};
+115     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(error);
+116     
+117     exit(1);
+118     
+119   \}
+120   
+121 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a0a7005db27b63a01f4917134da0ae600}\label{classController_a0a7005db27b63a01f4917134da0ae600}} 
+\index{Controller@{Controller}!Check\+Random\+Seed@{Check\+Random\+Seed}}
+\index{Check\+Random\+Seed@{Check\+Random\+Seed}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Check\+Random\+Seed()}{CheckRandomSeed()}}
+{\footnotesize\ttfamily int Controller\+::\+Check\+Random\+Seed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+33                                 \{
+34   
+35   \textcolor{comment}{//if the user forgot to set the random seed this int will be null and we need to throw an exception}
+36   \textcolor{keywordflow}{if} (random\_seed <= 0)\{
+37     
+38     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Random seed (option -r) was not set but is required"};
+39     
+40   \}\textcolor{keywordflow}{else}\{
+41   
+42     \textcolor{keywordflow}{return} random\_seed;
+43   \}
+44   
+45 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a5a9cf95b7410c4ca65036b8204856cd0}\label{classController_a5a9cf95b7410c4ca65036b8204856cd0}} 
+\index{Controller@{Controller}!Get\+Alignment\+File\+Path@{Get\+Alignment\+File\+Path}}
+\index{Get\+Alignment\+File\+Path@{Get\+Alignment\+File\+Path}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Get\+Alignment\+File\+Path()}{GetAlignmentFilePath()}}
+{\footnotesize\ttfamily std\+::string Controller\+::\+Get\+Alignment\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+53                                            \{
+54   
+55     \textcolor{keywordflow}{return} alignment\_file\_path;
+56   
+57 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a62139e7d2c85afb9046dd47528882089}\label{classController_a62139e7d2c85afb9046dd47528882089}} 
+\index{Controller@{Controller}!Get\+Chain\+Name@{Get\+Chain\+Name}}
+\index{Get\+Chain\+Name@{Get\+Chain\+Name}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Get\+Chain\+Name()}{GetChainName()}}
+{\footnotesize\ttfamily std\+::string Controller\+::\+Get\+Chain\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 80 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+80                                    \{
+81   
+82     \textcolor{keywordflow}{return} chain\_name;
+83   
+84 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_acee3589ec24f9a9432c07f2fe77f005b}\label{classController_acee3589ec24f9a9432c07f2fe77f005b}} 
+\index{Controller@{Controller}!Get\+Random\+Seed@{Get\+Random\+Seed}}
+\index{Get\+Random\+Seed@{Get\+Random\+Seed}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Get\+Random\+Seed()}{GetRandomSeed()}}
+{\footnotesize\ttfamily int Controller\+::\+Get\+Random\+Seed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+26                               \{
+27   
+28   \textcolor{keywordflow}{return} random\_seed;
+29   
+30   
+31 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a17abb2cec6c0109e9b2df3cdc082eaad}\label{classController_a17abb2cec6c0109e9b2df3cdc082eaad}} 
+\index{Controller@{Controller}!Run@{Run}}
+\index{Run@{Run}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily void Controller\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 124 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+124                      \{
+125   
+126   this->\hyperlink{classController_a1307438a1590b0deff238e4ee46aaed3}{CheckCLIOptions}();
+127   
+128   \textcolor{comment}{//if all option are set, we tell the user how the program was invoked.}
+129   std::string program\_call = \textcolor{stringliteral}{"phylotoy was invoked with the following options:\(\backslash\)n\(\backslash\)n\(\backslash\)tRandom seed = "} + 
+      std::to\_string(random\_seed) + \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)tAlingment path = "} + alignment\_file\_path + \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)tChain name = "} + chain\_name + \textcolor{stringliteral}{
+      "\(\backslash\)n\(\backslash\)n"};
+130   
+131   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(program\_call);  
+132   
+133   \textcolor{comment}{//tmp vector of strings}
+134   std::vector<std::string>* alignment;
+135   
+136   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"reading alignment\(\backslash\)n"});
+137   \textcolor{comment}{//now we need to open and store the Alignment in a string vector}
+138   alignment = input\_reader.\hyperlink{classInputReader_ad16dc3ebc228f45257b9ad4c3f62ed14}{ReadInputFile}(alignment\_file\_path);
+139   
+140   
+141   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"initializing tree\(\backslash\)n"});
+142   
+143   phylo\_tree.\hyperlink{classTree_ac456dedd5e42bb0fea807aeb526e5a93}{CreateBifurcatingTree}(alignment);
+144   
+145   \textcolor{comment}{//phylo\_tree.CreateStarTree(alignment);}
+146   
+147   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"collecting node info\(\backslash\)n"});
+148   std::vector<std::string>* nodes\_info = phylo\_tree.\hyperlink{classTree_a369b39fd2a571e0c4dfdadbdf4364c07}{CollectTreeNodesInfo}();
+149   
+150   \textcolor{keywordflow}{while}(!nodes\_info->empty()) \{
+151     
+152     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"in while\(\backslash\)n"});
+153     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(nodes\_info->back());
+154     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"\(\backslash\)n"});
+155     
+156     nodes\_info->pop\_back();
+157   \}
+158   
+159   
+160 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a67b2357dbc00faba0f6557f3660e8711}\label{classController_a67b2357dbc00faba0f6557f3660e8711}} 
+\index{Controller@{Controller}!Set\+Alignment\+File\+Path@{Set\+Alignment\+File\+Path}}
+\index{Set\+Alignment\+File\+Path@{Set\+Alignment\+File\+Path}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Set\+Alignment\+File\+Path()}{SetAlignmentFilePath()}}
+{\footnotesize\ttfamily void Controller\+::\+Set\+Alignment\+File\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 47 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+47                                                     \{
+48   
+49   alignment\_file\_path = path;
+50   
+51 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_aa122ac902c36eeb2889e12558d4ad087}\label{classController_aa122ac902c36eeb2889e12558d4ad087}} 
+\index{Controller@{Controller}!Set\+Chain\+Name@{Set\+Chain\+Name}}
+\index{Set\+Chain\+Name@{Set\+Chain\+Name}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Set\+Chain\+Name()}{SetChainName()}}
+{\footnotesize\ttfamily void Controller\+::\+Set\+Chain\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+74                                             \{
+75   
+76   chain\_name = name;
+77   
+78 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a1438b54d76df7239f361bd93dfbf9246}\label{classController_a1438b54d76df7239f361bd93dfbf9246}} 
+\index{Controller@{Controller}!Set\+Random\+Seed@{Set\+Random\+Seed}}
+\index{Set\+Random\+Seed@{Set\+Random\+Seed}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Set\+Random\+Seed()}{SetRandomSeed()}}
+{\footnotesize\ttfamily void Controller\+::\+Set\+Random\+Seed (\begin{DoxyParamCaption}\item[{int}]{seed }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+20                                        \{
+21   
+22   random\_seed = seed;
+23   
+24 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sergio/\+Repos/phylotoy/src/\hyperlink{Controller_8h}{Controller.\+h}\item 
+/home/sergio/\+Repos/phylotoy/src/\hyperlink{Controller_8cpp}{Controller.\+cpp}\end{DoxyCompactItemize}

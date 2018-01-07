@@ -1,0 +1,420 @@
+\hypertarget{classNode}{}\section{Node Class Reference}
+\label{classNode}\index{Node@{Node}}
+
+
+{\ttfamily \#include $<$Node.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node} ()
+\item 
+void \hyperlink{classNode_af92559fbef1938022d59b2902703afaa}{Set\+Sequence} (std\+::string species\+\_\+sequence)
+\item 
+std\+::string \hyperlink{classNode_a69f309f68de4f08e950a15ae79571ec0}{Get\+Sequence} ()
+\item 
+void \hyperlink{classNode_af4ba012237c10c42f2118e629633b844}{Set\+Species\+Name} (std\+::string name)
+\item 
+std\+::string \hyperlink{classNode_a9787fabf589f2b0764482b41091f775b}{Get\+Species\+Name} ()
+\item 
+void \hyperlink{classNode_a89bff92e3930d521439395ccf332418f}{Set\+Is\+Tip} (bool tip)
+\item 
+bool \hyperlink{classNode_ac2902fa01a9ebbeb692fe16d75bd6be2}{Get\+Is\+Tip} ()
+\item 
+void \hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{Set\+Parent\+Node} (\hyperlink{classNode}{Node} $\ast$parent)
+\item 
+\hyperlink{classNode}{Node} $\ast$ \hyperlink{classNode_a032d93c17743138203c77c721edfdae6}{Get\+Parent\+Node} ()
+\item 
+void \hyperlink{classNode_a9d7592d6bf479825eb411a244f4d7ad2}{Set\+Length\+Subtending\+Branch} (float branch\+\_\+length)
+\item 
+float \hyperlink{classNode_a7e55b2011625f394b8b08310b8cf45dc}{Get\+Length\+Subtending\+Branch} ()
+\item 
+void \hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{Add\+Node\+To\+Child\+Vector} (\hyperlink{classNode}{Node} $\ast$child)
+\item 
+void \hyperlink{classNode_a7480924f7879b04fe8c787f42ee888fe}{Set\+Child\+Vector} (std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$ childs)
+\item 
+std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$ $>$ \hyperlink{classNode_a9b9823315fd95dcd24aac97316de2859}{Get\+Child\+Vector} ()
+\item 
+void \hyperlink{classNode_a73e4640e16847b3c1b655930c193d03b}{Create\+Bifurcating\+Node} (std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$, int $\ast$calls)
+\item 
+std\+::vector$<$ std\+::string $>$ $\ast$ \hyperlink{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}{Get\+Node\+Info} (std\+::vector$<$ std\+::string $>$ $\ast$collected\+\_\+node\+\_\+info)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Node.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classNode_ad7a34779cad45d997bfd6d3d8043c75f}\label{classNode_ad7a34779cad45d997bfd6d3d8043c75f}} 
+\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection{\texorpdfstring{Node()}{Node()}}
+{\footnotesize\ttfamily Node\+::\+Node (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+14 \{\}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classNode_aef73af92aa3046218f83ed67a7996188}\label{classNode_aef73af92aa3046218f83ed67a7996188}} 
+\index{Node@{Node}!Add\+Node\+To\+Child\+Vector@{Add\+Node\+To\+Child\+Vector}}
+\index{Add\+Node\+To\+Child\+Vector@{Add\+Node\+To\+Child\+Vector}!Node@{Node}}
+\subsubsection{\texorpdfstring{Add\+Node\+To\+Child\+Vector()}{AddNodeToChildVector()}}
+{\footnotesize\ttfamily void Node\+::\+Add\+Node\+To\+Child\+Vector (\begin{DoxyParamCaption}\item[{\hyperlink{classNode}{Node} $\ast$}]{child }\end{DoxyParamCaption})}
+
+
+
+Definition at line 80 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+80                                           \{
+81   
+82   child\_nodes.push\_back(child);
+83   
+84 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a73e4640e16847b3c1b655930c193d03b}\label{classNode_a73e4640e16847b3c1b655930c193d03b}} 
+\index{Node@{Node}!Create\+Bifurcating\+Node@{Create\+Bifurcating\+Node}}
+\index{Create\+Bifurcating\+Node@{Create\+Bifurcating\+Node}!Node@{Node}}
+\subsubsection{\texorpdfstring{Create\+Bifurcating\+Node()}{CreateBifurcatingNode()}}
+{\footnotesize\ttfamily void Node\+::\+Create\+Bifurcating\+Node (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$}]{tip\+\_\+nodes,  }\item[{int $\ast$}]{calls }\end{DoxyParamCaption})}
+
+
+
+Definition at line 98 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+98                                                                       \{
+99   
+100   std::cerr << \textcolor{stringliteral}{"creating bifurcating node\(\backslash\)n"};
+101   
+102   *calls = *calls +1;
+103   
+104   \textcolor{keywordflow}{if}(!tip\_nodes.empty())\{
+105     
+106     \hyperlink{classNode}{Node}* tip\_node\_to\_insert = tip\_nodes.back();
+107         
+108     \textcolor{comment}{/* We create the tree as follows:}
+109 \textcolor{comment}{     * 1. the current node has no children, i.e. the size of the vector child\_nodes is 0.}
+110 \textcolor{comment}{     * We insert the tip node as a child of this node, sending a reference of it to the child node to point
+       to its parent node.}
+111 \textcolor{comment}{     * Once this is done, we create a new internode, set this node as its parent and add it to the
+       child\_nodes vector of the current node.}
+112 \textcolor{comment}{     * Then we recursively call this method on the new internode but only if we still have more than 1 tip
+       nodes left.}
+113 \textcolor{comment}{     * }
+114 \textcolor{comment}{     */}
+115     
+116     std::cerr << \textcolor{stringliteral}{"inserting tip: "} << tip\_node\_to\_insert->\hyperlink{classNode_a9787fabf589f2b0764482b41091f775b}{GetSpeciesName}() << \textcolor{stringliteral}{"\(\backslash\)n"};
+117     tip\_node\_to\_insert->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
+118     this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(tip\_node\_to\_insert);
+119     tip\_nodes.pop\_back();\textcolor{comment}{//this deletes the last element of the array}
+120     
+121     \textcolor{keywordflow}{if}(tip\_nodes.size() > 1)\{
+122       
+123       std::cerr << \textcolor{stringliteral}{"inserting new internode "} << *calls << \textcolor{stringliteral}{"\(\backslash\)n"};
+124       
+125       \hyperlink{classNode}{Node}* internode = \textcolor{keyword}{new} \hyperlink{classNode_ad7a34779cad45d997bfd6d3d8043c75f}{Node}();
+126       internode->\hyperlink{classNode_a89bff92e3930d521439395ccf332418f}{SetIsTip}(\textcolor{keyword}{false});
+127       internode->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
+128       internode->\hyperlink{classNode_af4ba012237c10c42f2118e629633b844}{SetSpeciesName}(std::to\_string(*calls));
+129       this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(internode);
+130     
+131       internode->\hyperlink{classNode_a73e4640e16847b3c1b655930c193d03b}{CreateBifurcatingNode}(tip\_nodes, calls);
+132       
+133     \}\textcolor{keywordflow}{else}\{
+134       \textcolor{comment}{//there is only one tip left, this we can add to the current internode because we only added 1 tip to
+       it and only 1 remains to be added}
+135       
+136       std::cerr << \textcolor{stringliteral}{"inserting last tip: "} << tip\_node\_to\_insert->\hyperlink{classNode_a9787fabf589f2b0764482b41091f775b}{GetSpeciesName}() << \textcolor{stringliteral}{"\(\backslash\)n"};
+137       tip\_node\_to\_insert->\hyperlink{classNode_acb22b8f28ca70e1316a6bafc375ee352}{SetParentNode}(\textcolor{keyword}{this});
+138       this->\hyperlink{classNode_aef73af92aa3046218f83ed67a7996188}{AddNodeToChildVector}(tip\_node\_to\_insert);
+139       tip\_nodes.pop\_back();\textcolor{comment}{//this deletes the last element of the array}
+140       
+141     \}
+142   \}
+143 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a9b9823315fd95dcd24aac97316de2859}\label{classNode_a9b9823315fd95dcd24aac97316de2859}} 
+\index{Node@{Node}!Get\+Child\+Vector@{Get\+Child\+Vector}}
+\index{Get\+Child\+Vector@{Get\+Child\+Vector}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Child\+Vector()}{GetChildVector()}}
+{\footnotesize\ttfamily std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$ $>$ Node\+::\+Get\+Child\+Vector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 92 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+92                                      \{
+93   
+94   \textcolor{keywordflow}{return} child\_nodes;
+95   
+96 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_ac2902fa01a9ebbeb692fe16d75bd6be2}\label{classNode_ac2902fa01a9ebbeb692fe16d75bd6be2}} 
+\index{Node@{Node}!Get\+Is\+Tip@{Get\+Is\+Tip}}
+\index{Get\+Is\+Tip@{Get\+Is\+Tip}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Is\+Tip()}{GetIsTip()}}
+{\footnotesize\ttfamily bool Node\+::\+Get\+Is\+Tip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 48 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+48                    \{
+49   
+50   \textcolor{keywordflow}{return} is\_tip;
+51   
+52 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a7e55b2011625f394b8b08310b8cf45dc}\label{classNode_a7e55b2011625f394b8b08310b8cf45dc}} 
+\index{Node@{Node}!Get\+Length\+Subtending\+Branch@{Get\+Length\+Subtending\+Branch}}
+\index{Get\+Length\+Subtending\+Branch@{Get\+Length\+Subtending\+Branch}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Length\+Subtending\+Branch()}{GetLengthSubtendingBranch()}}
+{\footnotesize\ttfamily float Node\+::\+Get\+Length\+Subtending\+Branch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+61                                       \{
+62   
+63   \textcolor{keywordflow}{return} length\_of\_subtending\_branch;
+64   
+65 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}\label{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}} 
+\index{Node@{Node}!Get\+Node\+Info@{Get\+Node\+Info}}
+\index{Get\+Node\+Info@{Get\+Node\+Info}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Node\+Info()}{GetNodeInfo()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ $\ast$ Node\+::\+Get\+Node\+Info (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{collected\+\_\+node\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Definition at line 145 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+145                                                                                 \{
+146   
+147   \textcolor{keywordflow}{if}(child\_nodes.empty()) \{
+148     
+149     std::cerr << \textcolor{stringliteral}{"empty node vector\(\backslash\)n"};
+150     
+151     \textcolor{comment}{//add the species name and sequence to the vector collecting the node information}
+152     std::string node\_info = species\_name + \textcolor{charliteral}{' '} + sequence;
+153     
+154     std::cerr << \textcolor{stringliteral}{"adding "} << node\_info << \textcolor{stringliteral}{"to info vector\(\backslash\)n"};
+155     
+156     collected\_node\_info->push\_back(node\_info);
+157     
+158     
+159   \}\textcolor{keywordflow}{else} \{
+160     
+161     std::cerr << \textcolor{stringliteral}{"recursively calling nodes\(\backslash\)n"};
+162     \textcolor{comment}{//for each child node, call this function.}
+163     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} child : child\_nodes) \{
+164       
+165       std::cerr << \textcolor{stringliteral}{"in for\(\backslash\)n"}; 
+166       child->GetNodeInfo(collected\_node\_info);
+167       
+168     \}
+169     
+170     std::cerr << \textcolor{stringliteral}{"back at internode \(\backslash\)n"};
+171     
+172     \textcolor{comment}{//add your own info if needed}
+173     
+174   \}
+175   
+176   \textcolor{keywordflow}{return} collected\_node\_info;
+177   
+178 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a032d93c17743138203c77c721edfdae6}\label{classNode_a032d93c17743138203c77c721edfdae6}} 
+\index{Node@{Node}!Get\+Parent\+Node@{Get\+Parent\+Node}}
+\index{Get\+Parent\+Node@{Get\+Parent\+Node}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Parent\+Node()}{GetParentNode()}}
+{\footnotesize\ttfamily \hyperlink{classNode}{Node} $\ast$ Node\+::\+Get\+Parent\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+73                          \{
+74   
+75   \textcolor{keywordflow}{return} parent\_node;
+76   
+77 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a69f309f68de4f08e950a15ae79571ec0}\label{classNode_a69f309f68de4f08e950a15ae79571ec0}} 
+\index{Node@{Node}!Get\+Sequence@{Get\+Sequence}}
+\index{Get\+Sequence@{Get\+Sequence}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Sequence()}{GetSequence()}}
+{\footnotesize\ttfamily std\+::string Node\+::\+Get\+Sequence (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+23                            \{
+24   
+25   \textcolor{keywordflow}{return} sequence;  
+26   
+27 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a9787fabf589f2b0764482b41091f775b}\label{classNode_a9787fabf589f2b0764482b41091f775b}} 
+\index{Node@{Node}!Get\+Species\+Name@{Get\+Species\+Name}}
+\index{Get\+Species\+Name@{Get\+Species\+Name}!Node@{Node}}
+\subsubsection{\texorpdfstring{Get\+Species\+Name()}{GetSpeciesName()}}
+{\footnotesize\ttfamily std\+::string Node\+::\+Get\+Species\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 36 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+36                               \{
+37   
+38   \textcolor{keywordflow}{return} species\_name;
+39   
+40 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a7480924f7879b04fe8c787f42ee888fe}\label{classNode_a7480924f7879b04fe8c787f42ee888fe}} 
+\index{Node@{Node}!Set\+Child\+Vector@{Set\+Child\+Vector}}
+\index{Set\+Child\+Vector@{Set\+Child\+Vector}!Node@{Node}}
+\subsubsection{\texorpdfstring{Set\+Child\+Vector()}{SetChildVector()}}
+{\footnotesize\ttfamily void Node\+::\+Set\+Child\+Vector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classNode}{Node} $\ast$$>$}]{childs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+86                                                 \{
+87   
+88   child\_nodes = childs;
+89   
+90 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a89bff92e3930d521439395ccf332418f}\label{classNode_a89bff92e3930d521439395ccf332418f}} 
+\index{Node@{Node}!Set\+Is\+Tip@{Set\+Is\+Tip}}
+\index{Set\+Is\+Tip@{Set\+Is\+Tip}!Node@{Node}}
+\subsubsection{\texorpdfstring{Set\+Is\+Tip()}{SetIsTip()}}
+{\footnotesize\ttfamily void Node\+::\+Set\+Is\+Tip (\begin{DoxyParamCaption}\item[{bool}]{tip }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+42                            \{
+43   
+44   is\_tip = tip;
+45   
+46 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_a9d7592d6bf479825eb411a244f4d7ad2}\label{classNode_a9d7592d6bf479825eb411a244f4d7ad2}} 
+\index{Node@{Node}!Set\+Length\+Subtending\+Branch@{Set\+Length\+Subtending\+Branch}}
+\index{Set\+Length\+Subtending\+Branch@{Set\+Length\+Subtending\+Branch}!Node@{Node}}
+\subsubsection{\texorpdfstring{Set\+Length\+Subtending\+Branch()}{SetLengthSubtendingBranch()}}
+{\footnotesize\ttfamily void Node\+::\+Set\+Length\+Subtending\+Branch (\begin{DoxyParamCaption}\item[{float}]{branch\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Definition at line 55 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+55                                                         \{
+56   
+57   length\_of\_subtending\_branch = branch\_length;
+58   
+59 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_acb22b8f28ca70e1316a6bafc375ee352}\label{classNode_acb22b8f28ca70e1316a6bafc375ee352}} 
+\index{Node@{Node}!Set\+Parent\+Node@{Set\+Parent\+Node}}
+\index{Set\+Parent\+Node@{Set\+Parent\+Node}!Node@{Node}}
+\subsubsection{\texorpdfstring{Set\+Parent\+Node()}{SetParentNode()}}
+{\footnotesize\ttfamily void Node\+::\+Set\+Parent\+Node (\begin{DoxyParamCaption}\item[{\hyperlink{classNode}{Node} $\ast$}]{parent }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+67                                     \{
+68   
+69   parent\_node = parent;
+70   
+71 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_af92559fbef1938022d59b2902703afaa}\label{classNode_af92559fbef1938022d59b2902703afaa}} 
+\index{Node@{Node}!Set\+Sequence@{Set\+Sequence}}
+\index{Set\+Sequence@{Set\+Sequence}!Node@{Node}}
+\subsubsection{\texorpdfstring{Set\+Sequence()}{SetSequence()}}
+{\footnotesize\ttfamily void Node\+::\+Set\+Sequence (\begin{DoxyParamCaption}\item[{std\+::string}]{species\+\_\+sequence }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+16                                                 \{
+17   
+18   std::cerr << \textcolor{stringliteral}{"setting sequence\(\backslash\)n"};
+19   sequence = species\_sequence;
+20   
+21 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classNode_af4ba012237c10c42f2118e629633b844}\label{classNode_af4ba012237c10c42f2118e629633b844}} 
+\index{Node@{Node}!Set\+Species\+Name@{Set\+Species\+Name}}
+\index{Set\+Species\+Name@{Set\+Species\+Name}!Node@{Node}}
+\subsubsection{\texorpdfstring{Set\+Species\+Name()}{SetSpeciesName()}}
+{\footnotesize\ttfamily void Node\+::\+Set\+Species\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file Node.\+cpp.
+
+
+\begin{DoxyCode}
+29                                        \{
+30   
+31   std::cerr << \textcolor{stringliteral}{"setting species name\(\backslash\)n"};
+32   species\_name = name;
+33   
+34 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sergio/\+Repos/phylotoy/src/\hyperlink{Node_8h}{Node.\+h}\item 
+/home/sergio/\+Repos/phylotoy/src/\hyperlink{Node_8cpp}{Node.\+cpp}\end{DoxyCompactItemize}

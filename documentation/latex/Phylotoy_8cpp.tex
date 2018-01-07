@@ -1,0 +1,72 @@
+\hypertarget{Phylotoy_8cpp}{}\section{/home/sergio/\+Repos/phylotoy/src/\+Phylotoy.cpp File Reference}
+\label{Phylotoy_8cpp}\index{/home/sergio/\+Repos/phylotoy/src/\+Phylotoy.\+cpp@{/home/sergio/\+Repos/phylotoy/src/\+Phylotoy.\+cpp}}
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}Controller.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{Phylotoy_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{Phylotoy_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{Phylotoy_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{Phylotoy.\+cpp@{Phylotoy.\+cpp}!main@{main}}
+\index{main@{main}!Phylotoy.\+cpp@{Phylotoy.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file Phylotoy.\+cpp.
+
+
+\begin{DoxyCode}
+13                                  \{
+14   
+15   \textcolor{comment}{//Initialize a controller object}
+16   
+17   \hyperlink{classController}{Controller} phylotoy\_controller;
+18   
+19   \textcolor{comment}{/* Read the CLI options set the appropriate variables in the controller}
+20 \textcolor{comment}{   * Options are passsed as follows:}
+21 \textcolor{comment}{   * -r random seed}
+22 \textcolor{comment}{   * -i alignment path}
+23 \textcolor{comment}{   * -c chain name}
+24 \textcolor{comment}{   */}
+25   
+26   \textcolor{keywordtype}{int} option;
+27   
+28   \textcolor{keywordflow}{while} ((option = getopt(argc, argv, \textcolor{stringliteral}{"r:i:c:"})) != -1) \{
+29     
+30     \textcolor{keywordflow}{switch} (option)\{
+31       
+32       \textcolor{keywordflow}{case} \textcolor{charliteral}{'r'}:
+33       \{
+34         phylotoy\_controller.\hyperlink{classController_a1438b54d76df7239f361bd93dfbf9246}{SetRandomSeed}(atoi(optarg));
+35         \textcolor{keywordflow}{break};
+36       \}
+37       \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
+38       \{
+39         std::string input (optarg);
+40         phylotoy\_controller.\hyperlink{classController_a67b2357dbc00faba0f6557f3660e8711}{SetAlignmentFilePath}(input);
+41         \textcolor{keywordflow}{break};
+42       \}
+43       \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}:
+44       \{
+45         std::string name (optarg);
+46         phylotoy\_controller.\hyperlink{classController_aa122ac902c36eeb2889e12558d4ad087}{SetChainName}(name);
+47         \textcolor{keywordflow}{break};
+48       \}
+49       \textcolor{keywordflow}{default}:
+50         abort();
+51     \}
+52   \}
+53   
+54   phylotoy\_controller.\hyperlink{classController_a17abb2cec6c0109e9b2df3cdc082eaad}{Run}();
+55   
+56   \textcolor{keywordflow}{return} 0;
+57 \}
+\end{DoxyCode}

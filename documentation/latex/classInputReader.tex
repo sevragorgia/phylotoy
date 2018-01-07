@@ -1,0 +1,162 @@
+\hypertarget{classInputReader}{}\section{Input\+Reader Class Reference}
+\label{classInputReader}\index{Input\+Reader@{Input\+Reader}}
+
+
+{\ttfamily \#include $<$Input\+Reader.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classInputReader_ae7d7eaec9edd0b8a5e6c5870f23070c3}{Input\+Reader} ()
+\item 
+\hyperlink{classInputReader_a213700cd8c4b1ed213bf778b7e43b891}{Input\+Reader} (std\+::string path)
+\item 
+void \hyperlink{classInputReader_a7b83b6aef68762bfc59a9958c4768da7}{Set\+Path} (std\+::string path)
+\item 
+std\+::string \hyperlink{classInputReader_a159a88dc2d5dbf63923c137636ed2941}{Get\+Path} ()
+\item 
+std\+::vector$<$ std\+::string $>$ $\ast$ \hyperlink{classInputReader_ad16dc3ebc228f45257b9ad4c3f62ed14}{Read\+Input\+File} (std\+::string path)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file Input\+Reader.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classInputReader_ae7d7eaec9edd0b8a5e6c5870f23070c3}\label{classInputReader_ae7d7eaec9edd0b8a5e6c5870f23070c3}} 
+\index{Input\+Reader@{Input\+Reader}!Input\+Reader@{Input\+Reader}}
+\index{Input\+Reader@{Input\+Reader}!Input\+Reader@{Input\+Reader}}
+\subsubsection{\texorpdfstring{Input\+Reader()}{InputReader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Input\+Reader\+::\+Input\+Reader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file Input\+Reader.\+cpp.
+
+
+\begin{DoxyCode}
+13 \{\}
+\end{DoxyCode}
+\mbox{\Hypertarget{classInputReader_a213700cd8c4b1ed213bf778b7e43b891}\label{classInputReader_a213700cd8c4b1ed213bf778b7e43b891}} 
+\index{Input\+Reader@{Input\+Reader}!Input\+Reader@{Input\+Reader}}
+\index{Input\+Reader@{Input\+Reader}!Input\+Reader@{Input\+Reader}}
+\subsubsection{\texorpdfstring{Input\+Reader()}{InputReader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Input\+Reader\+::\+Input\+Reader (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file Input\+Reader.\+cpp.
+
+
+\begin{DoxyCode}
+15                                        \{
+16   
+17   input\_file\_path = path;
+18   
+19 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classInputReader_a159a88dc2d5dbf63923c137636ed2941}\label{classInputReader_a159a88dc2d5dbf63923c137636ed2941}} 
+\index{Input\+Reader@{Input\+Reader}!Get\+Path@{Get\+Path}}
+\index{Get\+Path@{Get\+Path}!Input\+Reader@{Input\+Reader}}
+\subsubsection{\texorpdfstring{Get\+Path()}{GetPath()}}
+{\footnotesize\ttfamily std\+::string Input\+Reader\+::\+Get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file Input\+Reader.\+cpp.
+
+
+\begin{DoxyCode}
+27                                \{
+28   
+29   \textcolor{keywordflow}{return} input\_file\_path;
+30   
+31 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classInputReader_ad16dc3ebc228f45257b9ad4c3f62ed14}\label{classInputReader_ad16dc3ebc228f45257b9ad4c3f62ed14}} 
+\index{Input\+Reader@{Input\+Reader}!Read\+Input\+File@{Read\+Input\+File}}
+\index{Read\+Input\+File@{Read\+Input\+File}!Input\+Reader@{Input\+Reader}}
+\subsubsection{\texorpdfstring{Read\+Input\+File()}{ReadInputFile()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ $\ast$ Input\+Reader\+::\+Read\+Input\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file Input\+Reader.\+cpp.
+
+
+\begin{DoxyCode}
+33                                                               \{
+34   
+35   \textcolor{comment}{/* create and open the input stream. This will always be done, we need to control later if the stream }
+36 \textcolor{comment}{   * is good or not...  }
+37 \textcolor{comment}{  */}
+38   
+39   std::ifstream input\_stream(path);
+40   
+41   \textcolor{comment}{//create a vector of strings to store the data}
+42   std::vector<std::string>* lines = \textcolor{keyword}{new} std::vector<std::string>;
+43   
+44   \textcolor{keywordflow}{if}(input\_stream.good()) \{
+45     
+46     \textcolor{comment}{//dummy string to store the first line}
+47     std::string first\_line;
+48   
+49     \textcolor{comment}{//read the first line}
+50     std::getline(input\_stream, first\_line);
+51     
+52     \textcolor{comment}{//string to store the lines.}
+53     std::string input\_line;
+54     
+55     \textcolor{comment}{//now read the file line by line and push the line into the vector}
+56     \textcolor{keywordflow}{while}(std::getline(input\_stream, input\_line)) \{
+57       
+58       \textcolor{comment}{//add the lines to the string vector}
+59       lines->push\_back(input\_line);
+60        
+61     \}
+62     
+63     \textcolor{comment}{//input\_stream.close();}
+64     
+65   \}\textcolor{keywordflow}{else} \{
+66     
+67     std::cerr << \textcolor{stringliteral}{"Something went wrong reading the alignment file: "} << path << \textcolor{stringliteral}{"\(\backslash\)n"};
+68     exit(1);
+69     
+70   \}
+71   
+72   
+73   \textcolor{keywordflow}{return} lines;
+74   
+75 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classInputReader_a7b83b6aef68762bfc59a9958c4768da7}\label{classInputReader_a7b83b6aef68762bfc59a9958c4768da7}} 
+\index{Input\+Reader@{Input\+Reader}!Set\+Path@{Set\+Path}}
+\index{Set\+Path@{Set\+Path}!Input\+Reader@{Input\+Reader}}
+\subsubsection{\texorpdfstring{Set\+Path()}{SetPath()}}
+{\footnotesize\ttfamily void Input\+Reader\+::\+Set\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file Input\+Reader.\+cpp.
+
+
+\begin{DoxyCode}
+21                                         \{
+22   
+23   input\_file\_path = path;
+24   
+25 \}
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/sergio/\+Repos/phylotoy/src/\hyperlink{InputReader_8h}{Input\+Reader.\+h}\item 
+/home/sergio/\+Repos/phylotoy/src/\hyperlink{InputReader_8cpp}{Input\+Reader.\+cpp}\end{DoxyCompactItemize}
