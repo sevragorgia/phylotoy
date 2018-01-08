@@ -142,7 +142,7 @@ void Controller::Run() {
   
   phylo_tree.CreateBifurcatingTree(alignment);
   
-  //phylo_tree.CreateStarTree(alignment);
+  /*phylo_tree.CreateStarTree(alignment);
   
   output_printer.PrintMessage2Out("collecting node info recursively\n");
   std::vector<std::string>* nodes_info_recursively = phylo_tree.CollectTreeNodesInfoRecursively();
@@ -167,5 +167,7 @@ void Controller::Run() {
     
     nodes_info_iteratively->pop_back();
   }
+  */
   
+  output_printer.PrintMessage2Out(phylo_tree.GetTreeInNewickFormat());
 }

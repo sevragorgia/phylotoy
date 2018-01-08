@@ -248,4 +248,44 @@ std::vector<std::string>* Node::GetNodeInfo(std::vector<std::string>* collected_
   
 }
 
-
+/**
+ * This method modifies a 
+ * 
+ * @param newick_tree: a reference to std::string for the Node currently executing the method to store his information in newick 
+ * before calling the method on its children Nodes.
+ * 
+ * @return void: the method directly modifies the string.
+ */
+void Node::GetNodeInfoInNewickFormat(std::string& newick_tree){
+  
+  if(child_nodes.empty()){
+    
+    newick_tree.append(species_name);
+    
+  }else {
+    
+    newick_tree.append("(");
+    
+    /**
+     * for each child node, call this function. Note that because we do not have left and right child nodes but a vector of Node objects, 
+     * and we want this to be able to implemente polytomies later, we need to check whether the node object at hand is the last of the
+     * iterator to write a , or not.
+     * 
+     */
+    
+    for(auto child : child_nodes) {
+      
+      child->GetNodeInfoInNewickFormat(newick_tree);
+      
+      if(child->GetIsTip() && child != child_nodes.back()){
+      
+        newick_tree.append(",");
+        
+      }else {
+        
+        newick_tree.append(")");
+        
+      }
+    }
+  }
+}

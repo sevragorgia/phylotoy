@@ -55,4 +55,6 @@ public:
     
     std::vector<std::string>* GetNodeInfo(std::vector<std::string>* collected_node_info);
     
+    void GetNodeInfoInNewickFormat(std::string& newick_tree);
+    
 };

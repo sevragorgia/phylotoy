@@ -57,4 +57,6 @@ public:
     std::vector<std::string>* CollectTreeNodesInfoRecursively();
 
     std::vector<std::string>* CollectTreeNodesInfoIteratively();
+    
+    std::string GetTreeInNewickFormat();
 };

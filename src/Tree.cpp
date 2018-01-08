@@ -182,6 +182,25 @@ void Tree::GetTreeNodeVector(){
   
 }
 
+/**
+ * This methods recursively calls every Node in the tree and produces a string with the tree in newick format.
+ * 
+ * @returns a string object with the tree in newick format.
+ */
+
+std::string Tree::GetTreeInNewickFormat(){
+  
+  std::string newick_tree;
+  
+  current_root->GetNodeInfoInNewickFormat(newick_tree);
+  
+  newick_tree.append(";");
+  
+  return newick_tree;
+  
+}
+
+//private methods
 
 /**
  * This method initializes the tip nodes of the phylogenetic tree based on the passed alignment.
@@ -191,7 +210,6 @@ void Tree::GetTreeNodeVector(){
  * @returns a vector of Node*
  */
 
-//private methods
 std::vector<Node*> Tree::InitializeTipNodes(std::vector<std::string>* alignment){
   
   /**
