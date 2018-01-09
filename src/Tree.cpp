@@ -61,7 +61,7 @@ void Tree::AddToNodeVector(Node* node){
  * 
  * @param alignment is a sequence alignment with species names and sequences separated by an empty space.
  */
-void Tree::CreateStarTree(std::vector<std::string>* alignment){
+int Tree::CreateStarTree(std::vector<std::string>* alignment){
   
   std::cerr << "Creating star tree\n";
   
@@ -89,6 +89,8 @@ void Tree::CreateStarTree(std::vector<std::string>* alignment){
   //add root to the node vector  
   this->AddToNodeVector(current_root);
   
+  return current_root->GetIndex();
+  
 }
     
 /**
@@ -96,7 +98,7 @@ void Tree::CreateStarTree(std::vector<std::string>* alignment){
 * 
 * @param alignment is a sequence alignment stored on a vector of strings containing species names and sequencesseparated by an empty space.
 */
-void Tree::CreateBifurcatingTree(std::vector<std::string>* alignment){
+int Tree::CreateBifurcatingTree(std::vector<std::string>* alignment){
   
   int current_node_index = alignment->size();
   
@@ -114,7 +116,10 @@ void Tree::CreateBifurcatingTree(std::vector<std::string>* alignment){
   current_node_index = current_node_index + 1;
   
   //we initialize the tip nodes using the alignment provided by the user
-  current_root->CreateBifurcatingNode(this->InitializeTipNodes(alignment), &current_node_index, &tree_nodes);
+  current_root->CreateBifurcatingNode(this->InitializeTipNodes(alignment), current_node_index, tree_nodes);
+  
+  //return the total number of nodes in the tree
+  return current_node_index;
   
 }
   

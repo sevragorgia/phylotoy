@@ -50,9 +50,9 @@ public:
     
     void GetTreeNodeVector();
     
-    void CreateStarTree(std::vector<std::string>* alignment);
+    int CreateStarTree(std::vector<std::string>* alignment);
     
-    void CreateBifurcatingTree(std::vector<std::string>* alignment);
+    int CreateBifurcatingTree(std::vector<std::string>* alignment);
     
     std::vector<std::string>* CollectTreeNodesInfoRecursively();
 

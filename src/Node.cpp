@@ -125,7 +125,7 @@ std::vector<Node*> Node::GetChildVector(){
  * 
  */
 
-void Node::CreateBifurcatingNode(std::vector<Node*> tip_nodes, int* current_node_index, std::vector<Node*>* tree_nodes){
+void Node::CreateBifurcatingNode(std::vector<Node*> tip_nodes, int& current_node_index, std::vector<Node*>& tree_nodes){
   
   std::cerr << "creating bifurcating node " << tip_nodes.size() << "\n";
  
@@ -137,7 +137,7 @@ void Node::CreateBifurcatingNode(std::vector<Node*> tip_nodes, int* current_node
     std::cerr << "inserting tip: " << tip_node_to_insert->GetSpeciesName() << "\n";
     tip_node_to_insert->SetParentNode(this);
     this->AddNodeToChildVector(tip_node_to_insert);
-    tree_nodes->push_back(tip_node_to_insert);
+    tree_nodes.push_back(tip_node_to_insert);
     
     if(tip_nodes.size() == 1){
       
@@ -154,20 +154,20 @@ void Node::CreateBifurcatingNode(std::vector<Node*> tip_nodes, int* current_node
       
       tip_node_to_insert->SetParentNode(this);
       this->AddNodeToChildVector(tip_node_to_insert);
-      tree_nodes->push_back(tip_node_to_insert);
+      tree_nodes.push_back(tip_node_to_insert);
       
     }else{
       
-      std::cerr << "inserting new internode " << *current_node_index << "\n";
+      std::cerr << "inserting new internode " << current_node_index << "\n";
       
       Node* internode = new Node();
       internode->SetIsTip(false);
       internode->SetParentNode(this);
-      internode->SetIndex(*current_node_index);
+      internode->SetIndex(current_node_index);
       this->AddNodeToChildVector(internode);
-      tree_nodes->push_back(internode);
+      tree_nodes.push_back(internode);
       
-      *current_node_index = *current_node_index + 1;//increase the index counter
+      current_node_index = current_node_index + 1;//increase the index counter
       internode->CreateBifurcatingNode(tip_nodes, current_node_index, tree_nodes);
       
     }

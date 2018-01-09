@@ -49,7 +49,7 @@ public:
     void SetChildVector(std::vector<Node*> childs);
     std::vector<Node*> GetChildVector();
     
-    void CreateBifurcatingNode(std::vector<Node*>, int* calls, std::vector<Node*>* tree_nodes);
+    void CreateBifurcatingNode(std::vector<Node*>, int& calls, std::vector<Node*>& tree_nodes);
     
     void GetNodePointer(std::vector<Node*>* tree_nodes);
     

@@ -8,6 +8,7 @@
 #include "InputReader.h"
 #include "OutputPrinter.h"
 #include "Tree.h"
+#include "DistributionSampler.h"
 #include <string>
 #include <vector>
 
@@ -17,10 +18,12 @@ class Controller {
   int random_seed = -1;
   std::string alignment_file_path;
   std::string chain_name;
+  int number_of_generations = -1;
   
   //my servants
   InputReader input_reader;
   OutputPrinter output_printer;
+  DistributionSampler distribution_sampler;
   
   //my objects
   Tree phylo_tree;
@@ -31,6 +34,9 @@ class Controller {
     void SetRandomSeed(int seed);
     int GetRandomSeed();
     int CheckRandomSeed();
+    
+    void SetNumberOfGenerations(int ngens);
+    int CheckNumberOfGenerations();
     
     void SetAlignmentFilePath(std::string path);
     std::string GetAlignmentFilePath();

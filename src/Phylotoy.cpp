@@ -21,14 +21,19 @@ int main(int argc, char* argv[]) {
    * -r random seed
    * -i alignment path
    * -c chain name
+   * -g number of generations
    */
   
   int option;
   
-  while ((option = getopt(argc, argv, "r:i:c:")) != -1) {
+  while ((option = getopt(argc, argv, "b:r:i:c:g:")) != -1) {
     
     switch (option){
-      
+      /*case 'b':
+      {
+        phylotoy_controller.SetBranchLengthPrior();
+        break;
+      }*/
       case 'r':
       {
         phylotoy_controller.SetRandomSeed(atoi(optarg));
@@ -45,6 +50,11 @@ int main(int argc, char* argv[]) {
         std::string name (optarg);
         phylotoy_controller.SetChainName(name);
         break;
+      }
+      case 'g':
+      {
+        phylotoy_controller.SetNumberOfGenerations(atoi(optarg));
+        break; 
       }
       default:
         abort();
