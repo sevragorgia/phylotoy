@@ -2,8 +2,8 @@
 
 CC = g++
 DEBUG = -g
-CCFLAGS = -Wall -Wextra -ansi -pedantic $(DEBUG)
-LFLAGS = -Wall -Wextra -ansi -pedantic $(DEBUG)
+CCFLAGS = -std=c++11 -Wall -Wextra -ansi -pedantic $(DEBUG)
+LFLAGS = -std=c++11 -Wall -Wextra -ansi -pedantic $(DEBUG)
 
 EXEC = phylotoy
 SOURCES = $(wildcard ./src/*.cpp)
