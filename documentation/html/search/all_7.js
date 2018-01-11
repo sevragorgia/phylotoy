@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['phylotoy_2ecpp',['Phylotoy.cpp',['../Phylotoy_8cpp.html',1,'']]],
-  ['printmessage2out',['PrintMessage2Out',['../classOutputPrinter.html#ae9cd642df56fb6febef4cccff7ca12f2',1,'OutputPrinter']]]
+  ['outputprinter',['OutputPrinter',['../classOutputPrinter.html',1,'OutputPrinter'],['../classOutputPrinter.html#abbf799e4a04980138e93d633beb5e58b',1,'OutputPrinter::OutputPrinter()']]],
+  ['outputprinter_2ecpp',['OutputPrinter.cpp',['../OutputPrinter_8cpp.html',1,'']]],
+  ['outputprinter_2eh',['OutputPrinter.h',['../OutputPrinter_8h.html',1,'']]]
 ];

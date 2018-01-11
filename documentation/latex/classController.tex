@@ -15,6 +15,10 @@ int \hyperlink{classController_acee3589ec24f9a9432c07f2fe77f005b}{Get\+Random\+S
 \item 
 int \hyperlink{classController_a0a7005db27b63a01f4917134da0ae600}{Check\+Random\+Seed} ()
 \item 
+void \hyperlink{classController_aa42d6aa39fd621b739f2d86295e0b943}{Set\+Number\+Of\+Generations} (int ngens)
+\item 
+int \hyperlink{classController_a6d3e56483122b9580adef5475527a0f7}{Check\+Number\+Of\+Generations} ()
+\item 
 void \hyperlink{classController_a67b2357dbc00faba0f6557f3660e8711}{Set\+Alignment\+File\+Path} (std\+::string path)
 \item 
 std\+::string \hyperlink{classController_a5a9cf95b7410c4ca65036b8204856cd0}{Get\+Alignment\+File\+Path} ()
@@ -27,6 +31,18 @@ std\+::string \hyperlink{classController_a62139e7d2c85afb9046dd47528882089}{Get\
 \item 
 std\+::string \hyperlink{classController_a207236dbade67acf265531bfa7769056}{Check\+Chain\+Name} ()
 \item 
+void \hyperlink{classController_ab3b26fcf8f00ea5980bf7941dc24bb0b}{Set\+B\+L\+Uniform\+Min} (double u\+\_\+min)
+\item 
+double \hyperlink{classController_a733dd443633473ab1105c7f9bb88436a}{Get\+B\+L\+Uniform\+Min} ()
+\item 
+void \hyperlink{classController_ab75b88551fab21ddd99e748e21f6a334}{Set\+B\+L\+Uniform\+Max} (double u\+\_\+max)
+\item 
+double \hyperlink{classController_a3e8896ea85dbcf96e8995bcc15ab5945}{Get\+B\+L\+Uniform\+Max} ()
+\item 
+void \hyperlink{classController_ab3192e74f31bbe2e7faf70d497c67e9b}{Set\+B\+L\+Exponential\+Mean} (double e\+\_\+mean)
+\item 
+double \hyperlink{classController_aa645cd80a92c70d1cbffbc4e97ce27ae}{Get\+B\+L\+Exponential\+Mean} ()
+\item 
 void \hyperlink{classController_a1307438a1590b0deff238e4ee46aaed3}{Check\+C\+L\+I\+Options} ()
 \item 
 void \hyperlink{classController_a17abb2cec6c0109e9b2df3cdc082eaad}{Run} ()
@@ -36,7 +52,7 @@ void \hyperlink{classController_a17abb2cec6c0109e9b2df3cdc082eaad}{Run} ()
 \subsection{Detailed Description}
 
 
-Definition at line 14 of file Controller.\+h.
+Definition at line 15 of file Controller.\+h.
 
 
 
@@ -49,13 +65,11 @@ Definition at line 14 of file Controller.\+h.
 
 
 
-Definition at line 14 of file Controller.\+cpp.
+Definition at line 16 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-14                       \{
-15   
-16   
+16                       \{
 17   
 18 \}
 \end{DoxyCode}
@@ -68,25 +82,28 @@ Definition at line 14 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Check\+Alignment\+File\+Path()}{CheckAlignmentFilePath()}}
 {\footnotesize\ttfamily std\+::string Controller\+::\+Check\+Alignment\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Checks that the user provided alignment path is not empty \begin{DoxyReturn}{Returns}
+a std\+::string with the alignment path or raises an exception 
+\end{DoxyReturn}
 
 
-Definition at line 59 of file Controller.\+cpp.
+Definition at line 110 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-59                                              \{
-60   
-61   \textcolor{comment}{//if the user forgot to set the ali path this char* will be null and we need to throw an exception}
-62   \textcolor{keywordflow}{if} (!alignment\_file\_path.length())\{
-63     
-64     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Alignment file path (option -i) was not set but is required"};
-65     
-66   \}\textcolor{keywordflow}{else}\{
-67   
-68     \textcolor{keywordflow}{return} alignment\_file\_path;
-69   \}
-70   
-71 \}
+110                                              \{
+111   
+112   \textcolor{comment}{//if the user forgot to set the ali path this char* will be null and we need to throw an exception}
+113   \textcolor{keywordflow}{if} (!alignment\_file\_path.length())\{
+114     
+115     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Alignment file path (option -i) was not set but is required"};
+116     
+117   \}\textcolor{keywordflow}{else}\{
+118   
+119     \textcolor{keywordflow}{return} alignment\_file\_path;
+120   \}
+121   
+122 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a207236dbade67acf265531bfa7769056}\label{classController_a207236dbade67acf265531bfa7769056}} 
 \index{Controller@{Controller}!Check\+Chain\+Name@{Check\+Chain\+Name}}
@@ -94,26 +111,29 @@ Definition at line 59 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Check\+Chain\+Name()}{CheckChainName()}}
 {\footnotesize\ttfamily std\+::string Controller\+::\+Check\+Chain\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Check the user provided chain name is not empty \begin{DoxyReturn}{Returns}
+a std\+::string with the chain name or raises an exception 
+\end{DoxyReturn}
 
 
-Definition at line 86 of file Controller.\+cpp.
+Definition at line 148 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-86                                      \{
-87   
-88   \textcolor{comment}{//if the user forgot to set the chain name this char* will be null and we need to throw an exception}
-89   \textcolor{keywordflow}{if} (!chain\_name.length())\{
-90     
-91     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Chain name (option -c) was not set but is required"};
-92     
-93   \}\textcolor{keywordflow}{else}\{
-94   
-95     \textcolor{keywordflow}{return} chain\_name;
-96     
-97   \}
-98   
-99 \}
+148                                      \{
+149   
+150   \textcolor{comment}{//if the user forgot to set the chain name this char* will be null and we need to throw an exception}
+151   \textcolor{keywordflow}{if} (!chain\_name.length())\{
+152     
+153     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Chain name (option -c) was not set but is required"};
+154     
+155   \}\textcolor{keywordflow}{else}\{
+156   
+157     \textcolor{keywordflow}{return} chain\_name;
+158     
+159   \}
+160   
+161 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a1307438a1590b0deff238e4ee46aaed3}\label{classController_a1307438a1590b0deff238e4ee46aaed3}} 
 \index{Controller@{Controller}!Check\+C\+L\+I\+Options@{Check\+C\+L\+I\+Options}}
@@ -121,33 +141,62 @@ Definition at line 86 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Check\+C\+L\+I\+Options()}{CheckCLIOptions()}}
 {\footnotesize\ttfamily void Controller\+::\+Check\+C\+L\+I\+Options (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Checks that all options are fine 
 
-
-Definition at line 101 of file Controller.\+cpp.
+Definition at line 227 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-101                                  \{
-102   
-103   \textcolor{comment}{/*We need to check whether the necessary options were set*/}
-104   
-105   \textcolor{keywordflow}{try} \{
-106     
-107     this->\hyperlink{classController_a79fd3abba4177d597d571a97032c6432}{CheckAlignmentFilePath}();
-108     this->\hyperlink{classController_a207236dbade67acf265531bfa7769056}{CheckChainName}();
-109     this->\hyperlink{classController_a0a7005db27b63a01f4917134da0ae600}{CheckRandomSeed}();
-110         
-111   \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} \textcolor{keywordtype}{char}* exception) \{
-112     
-113     std::string what\_exception(exception);
-114     std::string error = \textcolor{stringliteral}{"Error: "} + what\_exception + \textcolor{stringliteral}{"\(\backslash\)n"};
-115     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(error);
-116     
-117     exit(1);
-118     
-119   \}
-120   
-121 \}
+227                                  \{
+228   
+229   \textcolor{comment}{/*We need to check whether the necessary options were set*/}
+230   
+231   \textcolor{keywordflow}{try} \{
+232     
+233     this->\hyperlink{classController_a79fd3abba4177d597d571a97032c6432}{CheckAlignmentFilePath}();
+234     this->\hyperlink{classController_a207236dbade67acf265531bfa7769056}{CheckChainName}();
+235     this->\hyperlink{classController_a0a7005db27b63a01f4917134da0ae600}{CheckRandomSeed}();
+236     this->\hyperlink{classController_a6d3e56483122b9580adef5475527a0f7}{CheckNumberOfGenerations}();
+237         
+238   \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} \textcolor{keywordtype}{char}* exception) \{
+239     
+240     std::string what\_exception(exception);
+241     std::string error = \textcolor{stringliteral}{"Error: "} + what\_exception + \textcolor{stringliteral}{"\(\backslash\)n"};
+242     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(error);
+243     
+244     exit(1);
+245     
+246   \}
+247   
+248 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a6d3e56483122b9580adef5475527a0f7}\label{classController_a6d3e56483122b9580adef5475527a0f7}} 
+\index{Controller@{Controller}!Check\+Number\+Of\+Generations@{Check\+Number\+Of\+Generations}}
+\index{Check\+Number\+Of\+Generations@{Check\+Number\+Of\+Generations}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Check\+Number\+Of\+Generations()}{CheckNumberOfGenerations()}}
+{\footnotesize\ttfamily int Controller\+::\+Check\+Number\+Of\+Generations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Checks the user provided a valid number of generations \begin{DoxyReturn}{Returns}
+the number of generations or raises and exception 
+\end{DoxyReturn}
+
+
+Definition at line 73 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+73                                         \{
+74   \textcolor{comment}{//if the user forgot to set the random seed this int will be null and we need to throw an exception}
+75   \textcolor{keywordflow}{if} (number\_of\_generations <= 0)\{
+76     
+77     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Number of generations (option -g) was not set but is required"};
+78     
+79   \}\textcolor{keywordflow}{else}\{
+80   
+81     \textcolor{keywordflow}{return} number\_of\_generations;
+82   \}
+83   
+84 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a0a7005db27b63a01f4917134da0ae600}\label{classController_a0a7005db27b63a01f4917134da0ae600}} 
 \index{Controller@{Controller}!Check\+Random\+Seed@{Check\+Random\+Seed}}
@@ -155,25 +204,28 @@ Definition at line 101 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Check\+Random\+Seed()}{CheckRandomSeed()}}
 {\footnotesize\ttfamily int Controller\+::\+Check\+Random\+Seed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Checks the user provided random see is valid \begin{DoxyReturn}{Returns}
+int rando\+\_\+seed or raises an exception 
+\end{DoxyReturn}
 
 
-Definition at line 33 of file Controller.\+cpp.
+Definition at line 45 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-33                                 \{
-34   
-35   \textcolor{comment}{//if the user forgot to set the random seed this int will be null and we need to throw an exception}
-36   \textcolor{keywordflow}{if} (random\_seed <= 0)\{
-37     
-38     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Random seed (option -r) was not set but is required"};
-39     
-40   \}\textcolor{keywordflow}{else}\{
-41   
-42     \textcolor{keywordflow}{return} random\_seed;
-43   \}
-44   
-45 \}
+45                                 \{
+46   
+47   \textcolor{comment}{//if the user forgot to set the random seed this int will be null and we need to throw an exception}
+48   \textcolor{keywordflow}{if} (random\_seed <= 0)\{
+49     
+50     \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"Random seed (option -r) was not set but is required"};
+51     
+52   \}\textcolor{keywordflow}{else}\{
+53   
+54     \textcolor{keywordflow}{return} random\_seed;
+55   \}
+56   
+57 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a5a9cf95b7410c4ca65036b8204856cd0}\label{classController_a5a9cf95b7410c4ca65036b8204856cd0}} 
 \index{Controller@{Controller}!Get\+Alignment\+File\+Path@{Get\+Alignment\+File\+Path}}
@@ -181,17 +233,83 @@ Definition at line 33 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Get\+Alignment\+File\+Path()}{GetAlignmentFilePath()}}
 {\footnotesize\ttfamily std\+::string Controller\+::\+Get\+Alignment\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Get the alignment path \begin{DoxyReturn}{Returns}
+a std\+::string with the user provided alignment path 
+\end{DoxyReturn}
 
 
-Definition at line 53 of file Controller.\+cpp.
+Definition at line 100 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-53                                            \{
-54   
-55     \textcolor{keywordflow}{return} alignment\_file\_path;
-56   
-57 \}
+100                                            \{
+101   
+102     \textcolor{keywordflow}{return} alignment\_file\_path;
+103   
+104 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_aa645cd80a92c70d1cbffbc4e97ce27ae}\label{classController_aa645cd80a92c70d1cbffbc4e97ce27ae}} 
+\index{Controller@{Controller}!Get\+B\+L\+Exponential\+Mean@{Get\+B\+L\+Exponential\+Mean}}
+\index{Get\+B\+L\+Exponential\+Mean@{Get\+B\+L\+Exponential\+Mean}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Get\+B\+L\+Exponential\+Mean()}{GetBLExponentialMean()}}
+{\footnotesize\ttfamily double Controller\+::\+Get\+B\+L\+Exponential\+Mean (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the mean value of the exponential distribution used to get the branch lengths \begin{DoxyReturn}{Returns}
+double with the user provided mean value 
+\end{DoxyReturn}
+
+
+Definition at line 217 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+217                                        \{
+218   
+219   \textcolor{keywordflow}{return} bl\_exponential\_mean;
+220 
+221 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a3e8896ea85dbcf96e8995bcc15ab5945}\label{classController_a3e8896ea85dbcf96e8995bcc15ab5945}} 
+\index{Controller@{Controller}!Get\+B\+L\+Uniform\+Max@{Get\+B\+L\+Uniform\+Max}}
+\index{Get\+B\+L\+Uniform\+Max@{Get\+B\+L\+Uniform\+Max}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Get\+B\+L\+Uniform\+Max()}{GetBLUniformMax()}}
+{\footnotesize\ttfamily double Controller\+::\+Get\+B\+L\+Uniform\+Max (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the max value of the uniform distribution used to get the branch lengths \begin{DoxyReturn}{Returns}
+double with the user provided max value 
+\end{DoxyReturn}
+
+
+Definition at line 197 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+197                                   \{
+198   
+199   \textcolor{keywordflow}{return} bl\_uniform\_max;
+200   
+201 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_a733dd443633473ab1105c7f9bb88436a}\label{classController_a733dd443633473ab1105c7f9bb88436a}} 
+\index{Controller@{Controller}!Get\+B\+L\+Uniform\+Min@{Get\+B\+L\+Uniform\+Min}}
+\index{Get\+B\+L\+Uniform\+Min@{Get\+B\+L\+Uniform\+Min}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Get\+B\+L\+Uniform\+Min()}{GetBLUniformMin()}}
+{\footnotesize\ttfamily double Controller\+::\+Get\+B\+L\+Uniform\+Min (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get the min value of the uniform distribution used to get the branch lengths \begin{DoxyReturn}{Returns}
+double with the user provided min value 
+\end{DoxyReturn}
+
+
+Definition at line 177 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+177                                   \{
+178   
+179   \textcolor{keywordflow}{return} bl\_uniform\_min;
+180   
+181 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a62139e7d2c85afb9046dd47528882089}\label{classController_a62139e7d2c85afb9046dd47528882089}} 
 \index{Controller@{Controller}!Get\+Chain\+Name@{Get\+Chain\+Name}}
@@ -199,17 +317,20 @@ Definition at line 53 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Get\+Chain\+Name()}{GetChainName()}}
 {\footnotesize\ttfamily std\+::string Controller\+::\+Get\+Chain\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Get the user provided chain name \begin{DoxyReturn}{Returns}
+std\+::string with the chain name 
+\end{DoxyReturn}
 
 
-Definition at line 80 of file Controller.\+cpp.
+Definition at line 138 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-80                                    \{
-81   
-82     \textcolor{keywordflow}{return} chain\_name;
-83   
-84 \}
+138                                    \{
+139   
+140     \textcolor{keywordflow}{return} chain\_name;
+141   
+142 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_acee3589ec24f9a9432c07f2fe77f005b}\label{classController_acee3589ec24f9a9432c07f2fe77f005b}} 
 \index{Controller@{Controller}!Get\+Random\+Seed@{Get\+Random\+Seed}}
@@ -217,18 +338,20 @@ Definition at line 80 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Get\+Random\+Seed()}{GetRandomSeed()}}
 {\footnotesize\ttfamily int Controller\+::\+Get\+Random\+Seed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+Get the random seed \begin{DoxyReturn}{Returns}
+int the random seed 
+\end{DoxyReturn}
 
 
-Definition at line 26 of file Controller.\+cpp.
+Definition at line 35 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-26                               \{
-27   
-28   \textcolor{keywordflow}{return} random\_seed;
-29   
-30   
-31 \}
+35                               \{
+36   
+37   \textcolor{keywordflow}{return} random\_seed;
+38   
+39 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a17abb2cec6c0109e9b2df3cdc082eaad}\label{classController_a17abb2cec6c0109e9b2df3cdc082eaad}} 
 \index{Controller@{Controller}!Run@{Run}}
@@ -236,64 +359,45 @@ Definition at line 26 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Run()}{Run()}}
 {\footnotesize\ttfamily void Controller\+::\+Run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+This method initiliases the tree object and starts the run. 
 
-
-Definition at line 124 of file Controller.\+cpp.
+Definition at line 255 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-124                      \{
-125   
-126   this->\hyperlink{classController_a1307438a1590b0deff238e4ee46aaed3}{CheckCLIOptions}();
-127   
-128   \textcolor{comment}{//if all option are set, we tell the user how the program was invoked.}
-129   std::string program\_call = \textcolor{stringliteral}{"phylotoy was invoked with the following options:\(\backslash\)n\(\backslash\)n\(\backslash\)tRandom seed = "} + 
+255                      \{
+256   
+257   this->\hyperlink{classController_a1307438a1590b0deff238e4ee46aaed3}{CheckCLIOptions}();
+258   
+259   \textcolor{comment}{//if all option are set, we tell the user how the program was invoked.}
+260   std::string program\_call = \textcolor{stringliteral}{"phylotoy was invoked with the following options:\(\backslash\)n\(\backslash\)n\(\backslash\)tRandom seed = "} + 
       std::to\_string(random\_seed) + \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)tAlingment path = "} + alignment\_file\_path + \textcolor{stringliteral}{"\(\backslash\)n\(\backslash\)tChain name = "} + chain\_name + \textcolor{stringliteral}{
       "\(\backslash\)n\(\backslash\)n"};
-130   
-131   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(program\_call);  
-132   
-133   \textcolor{comment}{//tmp vector of strings}
-134   std::vector<std::string>* alignment;
-135   
-136   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"reading alignment\(\backslash\)n"});
-137   \textcolor{comment}{//now we need to open and store the Alignment in a string vector}
-138   alignment = input\_reader.\hyperlink{classInputReader_ad16dc3ebc228f45257b9ad4c3f62ed14}{ReadInputFile}(alignment\_file\_path);
-139   
-140   
-141   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"initializing tree\(\backslash\)n"});
-142   
-143   phylo\_tree.\hyperlink{classTree_ac456dedd5e42bb0fea807aeb526e5a93}{CreateBifurcatingTree}(alignment);
-144   
-145   \textcolor{comment}{//phylo\_tree.CreateStarTree(alignment);}
-146   
-147   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"collecting node info recursively\(\backslash\)n"});
-148   std::vector<std::string>* nodes\_info\_recursively = phylo\_tree.
-      \hyperlink{classTree_af09073cc7b7166d16213614b624f3388}{CollectTreeNodesInfoRecursively}();
-149   
-150   \textcolor{keywordflow}{while}(!nodes\_info\_recursively->empty()) \{
-151     
-152     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"in while\(\backslash\)n"});
-153     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(nodes\_info\_recursively->back());
-154     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"\(\backslash\)n"});
-155     
-156     nodes\_info\_recursively->pop\_back();
-157   \}
-158   
-159   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"collecting node info iteratively\(\backslash\)n"});
-160   std::vector<std::string>* nodes\_info\_iteratively = phylo\_tree.
-      \hyperlink{classTree_a9a6309402407a051b346e779169f2ffc}{CollectTreeNodesInfoIteratively}();
-161   
-162   \textcolor{keywordflow}{while}(!nodes\_info\_iteratively->empty()) \{
-163     
-164     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"in while\(\backslash\)n"});
-165     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(nodes\_info\_iteratively->back());
-166     output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"\(\backslash\)n"});
-167     
-168     nodes\_info\_iteratively->pop\_back();
-169   \}
-170   
-171 \}
+261   
+262   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(program\_call);  
+263   
+264   \textcolor{comment}{//tmp vector of strings}
+265   std::vector<std::string>* alignment;
+266   
+267   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"reading alignment\(\backslash\)n"});
+268   \textcolor{comment}{//now we need to open and store the Alignment in a string vector}
+269   alignment = input\_reader.\hyperlink{classInputReader_ad16dc3ebc228f45257b9ad4c3f62ed14}{ReadInputFile}(alignment\_file\_path);
+270   
+271   
+272   output\_printer.\hyperlink{classOutputPrinter_ae9cd642df56fb6febef4cccff7ca12f2}{PrintMessage2Out}(\textcolor{stringliteral}{"initializing tree\(\backslash\)n"});
+273   
+274   \textcolor{keywordtype}{int} number\_of\_nodes = phylo\_tree.\hyperlink{classTree_a1033914891d96918380c1770a179b670}{CreateBifurcatingTree}(alignment);
+275   
+276   \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i < number\_of\_generations; i++)\{
+277     
+278     std::cerr << \textcolor{stringliteral}{"Select Node "} << distribution\_sampler.\hyperlink{classDistributionSampler_a9b8f106eeb87f623ab457bd67ea7bfac}{SampleFromIntUniform}(0,
+      number\_of\_nodes) << \textcolor{stringliteral}{"\(\backslash\)n"};
+279     \textcolor{comment}{//std::cerr << "Sample BL  " << distribution\_sampler.SampleBLFromUniform(bl\_uniform\_min,
+       bl\_uniform\_max) << "\(\backslash\)n";}
+280     std::cerr << \textcolor{stringliteral}{"Sample BL  "} << distribution\_sampler.\hyperlink{classDistributionSampler_a05dfeef7e98478c472fe40a4526fb45a}{SampleFromExponential}(
+      bl\_exponential\_mean) << \textcolor{stringliteral}{"\(\backslash\)n"};
+281   \}
+282 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a67b2357dbc00faba0f6557f3660e8711}\label{classController_a67b2357dbc00faba0f6557f3660e8711}} 
 \index{Controller@{Controller}!Set\+Alignment\+File\+Path@{Set\+Alignment\+File\+Path}}
@@ -301,17 +405,91 @@ Definition at line 124 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Set\+Alignment\+File\+Path()}{SetAlignmentFilePath()}}
 {\footnotesize\ttfamily void Controller\+::\+Set\+Alignment\+File\+Path (\begin{DoxyParamCaption}\item[{std\+::string}]{path }\end{DoxyParamCaption})}
 
+Set the alignment file path 
+\begin{DoxyParams}{Parameters}
+{\em path} & an std\+::string object with the user provided path to the alignment \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 47 of file Controller.\+cpp.
+Definition at line 90 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-47                                                     \{
-48   
-49   alignment\_file\_path = path;
-50   
-51 \}
+90                                                     \{
+91   
+92   alignment\_file\_path = path;
+93   
+94 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_ab3192e74f31bbe2e7faf70d497c67e9b}\label{classController_ab3192e74f31bbe2e7faf70d497c67e9b}} 
+\index{Controller@{Controller}!Set\+B\+L\+Exponential\+Mean@{Set\+B\+L\+Exponential\+Mean}}
+\index{Set\+B\+L\+Exponential\+Mean@{Set\+B\+L\+Exponential\+Mean}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Set\+B\+L\+Exponential\+Mean()}{SetBLExponentialMean()}}
+{\footnotesize\ttfamily void Controller\+::\+Set\+B\+L\+Exponential\+Mean (\begin{DoxyParamCaption}\item[{double}]{e\+\_\+mean }\end{DoxyParamCaption})}
+
+Set the mean value of the exponential distribution used to get the branch lengths 
+\begin{DoxyParams}{Parameters}
+{\em e\+\_\+mean} & a double with the user provided mean value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 207 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+207                                                   \{
+208   
+209   bl\_exponential\_mean = e\_mean;
+210   
+211 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_ab75b88551fab21ddd99e748e21f6a334}\label{classController_ab75b88551fab21ddd99e748e21f6a334}} 
+\index{Controller@{Controller}!Set\+B\+L\+Uniform\+Max@{Set\+B\+L\+Uniform\+Max}}
+\index{Set\+B\+L\+Uniform\+Max@{Set\+B\+L\+Uniform\+Max}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Set\+B\+L\+Uniform\+Max()}{SetBLUniformMax()}}
+{\footnotesize\ttfamily void Controller\+::\+Set\+B\+L\+Uniform\+Max (\begin{DoxyParamCaption}\item[{double}]{u\+\_\+max }\end{DoxyParamCaption})}
+
+Set the max value for the uniform distribution used to get the branch lengths 
+\begin{DoxyParams}{Parameters}
+{\em double} & with the user provided value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 187 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+187                                             \{
+188   
+189   bl\_uniform\_max = u\_max;
+190   
+191 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_ab3b26fcf8f00ea5980bf7941dc24bb0b}\label{classController_ab3b26fcf8f00ea5980bf7941dc24bb0b}} 
+\index{Controller@{Controller}!Set\+B\+L\+Uniform\+Min@{Set\+B\+L\+Uniform\+Min}}
+\index{Set\+B\+L\+Uniform\+Min@{Set\+B\+L\+Uniform\+Min}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Set\+B\+L\+Uniform\+Min()}{SetBLUniformMin()}}
+{\footnotesize\ttfamily void Controller\+::\+Set\+B\+L\+Uniform\+Min (\begin{DoxyParamCaption}\item[{double}]{u\+\_\+min }\end{DoxyParamCaption})}
+
+Set the min value for the uniform distribution used to get the branch lengths 
+\begin{DoxyParams}{Parameters}
+{\em double} & with the user provided value \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 167 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+167                                             \{
+168   
+169   bl\_uniform\_min = u\_min;
+170   
+171 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_aa122ac902c36eeb2889e12558d4ad087}\label{classController_aa122ac902c36eeb2889e12558d4ad087}} 
 \index{Controller@{Controller}!Set\+Chain\+Name@{Set\+Chain\+Name}}
@@ -319,17 +497,45 @@ Definition at line 47 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Set\+Chain\+Name()}{SetChainName()}}
 {\footnotesize\ttfamily void Controller\+::\+Set\+Chain\+Name (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})}
 
+Set the name of the name 
+\begin{DoxyParams}{Parameters}
+{\em name} & a std\+::string provided by the user \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 74 of file Controller.\+cpp.
+Definition at line 128 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-74                                             \{
-75   
-76   chain\_name = name;
-77   
-78 \}
+128                                             \{
+129   
+130   chain\_name = name;
+131   
+132 \}
+\end{DoxyCode}
+\mbox{\Hypertarget{classController_aa42d6aa39fd621b739f2d86295e0b943}\label{classController_aa42d6aa39fd621b739f2d86295e0b943}} 
+\index{Controller@{Controller}!Set\+Number\+Of\+Generations@{Set\+Number\+Of\+Generations}}
+\index{Set\+Number\+Of\+Generations@{Set\+Number\+Of\+Generations}!Controller@{Controller}}
+\subsubsection{\texorpdfstring{Set\+Number\+Of\+Generations()}{SetNumberOfGenerations()}}
+{\footnotesize\ttfamily void Controller\+::\+Set\+Number\+Of\+Generations (\begin{DoxyParamCaption}\item[{int}]{ngens }\end{DoxyParamCaption})}
+
+Set the number of generations 
+\begin{DoxyParams}{Parameters}
+{\em ngens} & an integer providing the desired number of generations for the chain to run \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file Controller.\+cpp.
+
+
+\begin{DoxyCode}
+63                                                 \{
+64   
+65   number\_of\_generations = ngens;
+66   
+67 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classController_a1438b54d76df7239f361bd93dfbf9246}\label{classController_a1438b54d76df7239f361bd93dfbf9246}} 
 \index{Controller@{Controller}!Set\+Random\+Seed@{Set\+Random\+Seed}}
@@ -337,17 +543,23 @@ Definition at line 74 of file Controller.\+cpp.
 \subsubsection{\texorpdfstring{Set\+Random\+Seed()}{SetRandomSeed()}}
 {\footnotesize\ttfamily void Controller\+::\+Set\+Random\+Seed (\begin{DoxyParamCaption}\item[{int}]{seed }\end{DoxyParamCaption})}
 
+Set the random seed used for the number generator 
+\begin{DoxyParams}{Parameters}
+{\em seed,an} & integer especifying the random seed \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 20 of file Controller.\+cpp.
+Definition at line 24 of file Controller.\+cpp.
 
 
 \begin{DoxyCode}
-20                                        \{
-21   
-22   random\_seed = seed;
-23   
-24 \}
+24                                        \{
+25   
+26   random\_seed = seed;
+27   distribution\_sampler.\hyperlink{classDistributionSampler_ae5a6fec26e2dd0f149d3fc528a92ad4e}{SetRandomNumberGeneratorSeed}(seed);
+28   
+29 \}
 \end{DoxyCode}
 
 

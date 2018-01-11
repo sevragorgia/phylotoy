@@ -1,9 +1,10 @@
 \hypertarget{Phylotoy_8cpp}{}\section{/home/sergio/\+Repos/phylotoy/src/\+Phylotoy.cpp File Reference}
 \label{Phylotoy_8cpp}\index{/home/sergio/\+Repos/phylotoy/src/\+Phylotoy.\+cpp@{/home/sergio/\+Repos/phylotoy/src/\+Phylotoy.\+cpp}}
-{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$getopt.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}Controller.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -18,55 +19,92 @@ int \hyperlink{Phylotoy_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc,
 \subsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
 
+phylotoy
 
+\begin{DoxyAuthor}{Author}
+Sergio Vargas
+\end{DoxyAuthor}
+A toy program to learn how bayesian phylogenetic reconstruction works... Read the C\+LI options set the appropriate variables in the controller Options are passsed as follows\+: --random\+\_\+seed expects an integer that will be used as the random seed for the run --input\+\_\+file expect a path to the alignment file --chain\+\_\+name expects the user to provide a name for the chain --generations expects an integer especifying the number of generations --uniform\+\_\+branches Branch lengths will be sampled from a Uniform distribution. Expects two floats separated by a , and especifying the min and max values for the uniform branch length distribution. --exponential\+\_\+branches expects a float especifying the mean value of the exponential distribution --uniform\+\_\+dirichlet\+\_\+branches Branch lengths will be sampled from a uniform Dirichlet distribution. No argument expected. --non\+\_\+uniform\+\_\+dirichlet\+\_\+branches Branch lengths will be sampled from a non-\/uniform Dirichlet distribution. No argument expected. --verbose activate verbosity
 
-Definition at line 13 of file Phylotoy.\+cpp.
+Definition at line 16 of file Phylotoy.\+cpp.
 
 
 \begin{DoxyCode}
-13                                  \{
-14   
-15   \textcolor{comment}{//Initialize a controller object}
-16   
-17   \hyperlink{classController}{Controller} phylotoy\_controller;
-18   
-19   \textcolor{comment}{/* Read the CLI options set the appropriate variables in the controller}
-20 \textcolor{comment}{   * Options are passsed as follows:}
-21 \textcolor{comment}{   * -r random seed}
-22 \textcolor{comment}{   * -i alignment path}
-23 \textcolor{comment}{   * -c chain name}
-24 \textcolor{comment}{   */}
-25   
-26   \textcolor{keywordtype}{int} option;
-27   
-28   \textcolor{keywordflow}{while} ((option = getopt(argc, argv, \textcolor{stringliteral}{"r:i:c:"})) != -1) \{
-29     
-30     \textcolor{keywordflow}{switch} (option)\{
-31       
-32       \textcolor{keywordflow}{case} \textcolor{charliteral}{'r'}:
-33       \{
-34         phylotoy\_controller.\hyperlink{classController_a1438b54d76df7239f361bd93dfbf9246}{SetRandomSeed}(atoi(optarg));
-35         \textcolor{keywordflow}{break};
-36       \}
-37       \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
-38       \{
-39         std::string input (optarg);
-40         phylotoy\_controller.\hyperlink{classController_a67b2357dbc00faba0f6557f3660e8711}{SetAlignmentFilePath}(input);
-41         \textcolor{keywordflow}{break};
-42       \}
-43       \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}:
-44       \{
-45         std::string name (optarg);
-46         phylotoy\_controller.\hyperlink{classController_aa122ac902c36eeb2889e12558d4ad087}{SetChainName}(name);
-47         \textcolor{keywordflow}{break};
-48       \}
-49       \textcolor{keywordflow}{default}:
-50         abort();
-51     \}
-52   \}
-53   
-54   phylotoy\_controller.\hyperlink{classController_a17abb2cec6c0109e9b2df3cdc082eaad}{Run}();
-55   
-56   \textcolor{keywordflow}{return} 0;
-57 \}
+16                                  \{
+17   
+18   \textcolor{comment}{//Initialize a controller object}
+19   
+20   \hyperlink{classController}{Controller} phylotoy\_controller;
+21   
+37   \textcolor{keywordtype}{int} option;
+38   
+39   \textcolor{keyword}{static} \textcolor{keyword}{struct }option long\_options[] = \{\{ \textcolor{stringliteral}{"random\_seed"},  required\_argument, 0, \textcolor{charliteral}{'r'}\},
+40                                          \{ \textcolor{stringliteral}{"input\_file"}, required\_argument, 0, \textcolor{charliteral}{'i'}\},
+41                                          \{ \textcolor{stringliteral}{"chain\_name"}, required\_argument, 0, \textcolor{charliteral}{'c'}\},
+42                                          \{ \textcolor{stringliteral}{"generations"}, required\_argument, 0, \textcolor{charliteral}{'g'}\},
+43                                          \{ \textcolor{stringliteral}{"uniform\_branches"}, required\_argument, 0, \textcolor{charliteral}{'u'}\},
+44                                          \{ \textcolor{stringliteral}{"exponential\_branches"}, required\_argument, 0, \textcolor{charliteral}{'e'}\},
+45                                          \{ \textcolor{stringliteral}{"uniform\_dirichlet\_branches"}, required\_argument, 0, \textcolor{charliteral}{'f'}\},
+46                                          \{ \textcolor{stringliteral}{"non\_uniform\_dirichlet\_branches"}, required\_argument, 0, \textcolor{charliteral}{'o'}\},
+47                                          \{ \textcolor{stringliteral}{"verbose"}, no\_argument, 0, \textcolor{charliteral}{'v'}\},
+48                                          \{0, 0, 0, 0\}
+49   \};
+50   
+51   \textcolor{keywordflow}{while} ((option = getopt(argc, argv, \textcolor{stringliteral}{"r:i:c:g:u:e:ud:nd:v"})) != -1) \{
+52     
+53     \textcolor{keywordflow}{switch} (option)\{
+54       \textcolor{keywordflow}{case} \textcolor{charliteral}{'r'}:
+55       \{
+56         phylotoy\_controller.\hyperlink{classController_a1438b54d76df7239f361bd93dfbf9246}{SetRandomSeed}(atoi(optarg));
+57         \textcolor{keywordflow}{break};
+58       \}
+59       \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}:
+60       \{
+61         std::string input (optarg);
+62         phylotoy\_controller.\hyperlink{classController_a67b2357dbc00faba0f6557f3660e8711}{SetAlignmentFilePath}(input);
+63         \textcolor{keywordflow}{break};
+64       \}
+65       \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}:
+66       \{
+67         std::string name (optarg);
+68         phylotoy\_controller.\hyperlink{classController_aa122ac902c36eeb2889e12558d4ad087}{SetChainName}(name);
+69         \textcolor{keywordflow}{break};
+70       \}
+71       \textcolor{keywordflow}{case} \textcolor{charliteral}{'g'}:
+72       \{
+73         phylotoy\_controller.\hyperlink{classController_aa42d6aa39fd621b739f2d86295e0b943}{SetNumberOfGenerations}(atoi(optarg));
+74         \textcolor{keywordflow}{break}; 
+75       \}
+76       \textcolor{keywordflow}{case} \textcolor{charliteral}{'u'}:
+77       \{
+78         \textcolor{keywordtype}{char}* min = strtok(optarg, \textcolor{stringliteral}{","});
+79         \textcolor{keywordtype}{char}* max = strtok(NULL, \textcolor{stringliteral}{","});
+80         phylotoy\_controller.\hyperlink{classController_ab3b26fcf8f00ea5980bf7941dc24bb0b}{SetBLUniformMin}(atoi(min));
+81         phylotoy\_controller.\hyperlink{classController_ab75b88551fab21ddd99e748e21f6a334}{SetBLUniformMax}(atoi(max));
+82         \textcolor{keywordflow}{break};
+83       \}
+84       \textcolor{keywordflow}{case} \textcolor{charliteral}{'e'}:
+85       \{
+86         phylotoy\_controller.\hyperlink{classController_ab3192e74f31bbe2e7faf70d497c67e9b}{SetBLExponentialMean}(atof(optarg));
+87         \textcolor{keywordflow}{break};
+88       \}
+89       \textcolor{keywordflow}{case} \textcolor{charliteral}{'f'}:
+90       \{
+91         \textcolor{keywordflow}{break};
+92         
+93       \}
+94       \textcolor{keywordflow}{case} \textcolor{charliteral}{'o'}:
+95       \{
+96         \textcolor{keywordflow}{break};
+97         
+98       \}
+99       \textcolor{keywordflow}{default}:
+100         abort();
+101     \}
+102   \}
+103   
+104   phylotoy\_controller.\hyperlink{classController_a17abb2cec6c0109e9b2df3cdc082eaad}{Run}();
+105   
+106   \textcolor{keywordflow}{return} 0;
+107 \}
 \end{DoxyCode}

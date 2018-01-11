@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['outputprinter',['OutputPrinter',['../classOutputPrinter.html#abbf799e4a04980138e93d633beb5e58b',1,'OutputPrinter']]]
+  ['node',['Node',['../classNode.html#ad7a34779cad45d997bfd6d3d8043c75f',1,'Node']]]
 ];

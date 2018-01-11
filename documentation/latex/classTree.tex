@@ -25,13 +25,15 @@ void \hyperlink{classTree_aba172068387b9b5be1a6750a30e8199a}{Add\+To\+Node\+Vect
 \item 
 void \hyperlink{classTree_aefee00842552e70746a5ed1fdca4f91f}{Get\+Tree\+Node\+Vector} ()
 \item 
-void \hyperlink{classTree_ac446f0f8211fcc033502690a9a164e95}{Create\+Star\+Tree} (std\+::vector$<$ std\+::string $>$ $\ast$alignment)
+int \hyperlink{classTree_a489e5392997aebd8ae98c97fb4fdb0a0}{Create\+Star\+Tree} (std\+::vector$<$ std\+::string $>$ $\ast$alignment)
 \item 
-void \hyperlink{classTree_ac456dedd5e42bb0fea807aeb526e5a93}{Create\+Bifurcating\+Tree} (std\+::vector$<$ std\+::string $>$ $\ast$alignment)
+int \hyperlink{classTree_a1033914891d96918380c1770a179b670}{Create\+Bifurcating\+Tree} (std\+::vector$<$ std\+::string $>$ $\ast$alignment)
 \item 
 std\+::vector$<$ std\+::string $>$ $\ast$ \hyperlink{classTree_af09073cc7b7166d16213614b624f3388}{Collect\+Tree\+Nodes\+Info\+Recursively} ()
 \item 
 std\+::vector$<$ std\+::string $>$ $\ast$ \hyperlink{classTree_a9a6309402407a051b346e779169f2ffc}{Collect\+Tree\+Nodes\+Info\+Iteratively} ()
+\item 
+std\+::string \hyperlink{classTree_a27d9ae5dc8700822a6091eff1e548600}{Get\+Tree\+In\+Newick\+Format} ()
 \end{DoxyCompactItemize}
 
 
@@ -98,38 +100,38 @@ a vector of strings
 \end{DoxyReturn}
 
 
-Definition at line 144 of file Tree.\+cpp.
+Definition at line 149 of file Tree.\+cpp.
 
 
 \begin{DoxyCode}
-144                                                            \{
-145   
-146   std::vector<std::string>* tree\_nodes\_info = \textcolor{keyword}{new} std::vector<std::string>;
-147   
-148   std::cerr << \textcolor{stringliteral}{"iterating over "} << tree\_nodes.size() << \textcolor{stringliteral}{" tree nodes to get their information\(\backslash\)n"};
-149   
-150   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} node : tree\_nodes)\{
-151     
-152     \textcolor{keywordflow}{if}(node->GetIsTip())\{
-153       
-154       \textcolor{comment}{//node is a tip, get the species name and sequence}
-155       std::string node\_info = std::to\_string(node->GetIndex()) + \textcolor{charliteral}{' '} + node->GetSpeciesName() + \textcolor{charliteral}{' '} + node
-      ->GetSequence();
-156       tree\_nodes\_info->push\_back(node\_info);
-157       std::cerr << \textcolor{stringliteral}{"adding tip: "} << node\_info << \textcolor{stringliteral}{" to information vector\(\backslash\)n"};
+149                                                            \{
+150   
+151   std::vector<std::string>* tree\_nodes\_info = \textcolor{keyword}{new} std::vector<std::string>;
+152   
+153   std::cerr << \textcolor{stringliteral}{"iterating over "} << tree\_nodes.size() << \textcolor{stringliteral}{" tree nodes to get their information\(\backslash\)n"};
+154   
+155   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} node : tree\_nodes)\{
+156     
+157     \textcolor{keywordflow}{if}(node->GetIsTip())\{
 158       
-159     \}\textcolor{keywordflow}{else}\{
-160       \textcolor{comment}{//node is an internode get the index only}
-161       std::string node\_info = std::to\_string(node->GetIndex());
-162       tree\_nodes\_info->push\_back(node\_info);
-163       std::cerr << \textcolor{stringliteral}{"adding internode: "} << node\_info << \textcolor{stringliteral}{" to information vector\(\backslash\)n"};
-164       
-165     \}
-166     
-167   \}
-168   
-169   \textcolor{keywordflow}{return} tree\_nodes\_info;
-170 \}
+159       \textcolor{comment}{//node is a tip, get the species name and sequence}
+160       std::string node\_info = std::to\_string(node->GetIndex()) + \textcolor{charliteral}{' '} + node->GetSpeciesName() + \textcolor{charliteral}{' '} + node
+      ->GetSequence();
+161       tree\_nodes\_info->push\_back(node\_info);
+162       std::cerr << \textcolor{stringliteral}{"adding tip: "} << node\_info << \textcolor{stringliteral}{" to information vector\(\backslash\)n"};
+163       
+164     \}\textcolor{keywordflow}{else}\{
+165       \textcolor{comment}{//node is an internode get the index only}
+166       std::string node\_info = std::to\_string(node->GetIndex());
+167       tree\_nodes\_info->push\_back(node\_info);
+168       std::cerr << \textcolor{stringliteral}{"adding internode: "} << node\_info << \textcolor{stringliteral}{" to information vector\(\backslash\)n"};
+169       
+170     \}
+171     
+172   \}
+173   
+174   \textcolor{keywordflow}{return} tree\_nodes\_info;
+175 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classTree_af09073cc7b7166d16213614b624f3388}\label{classTree_af09073cc7b7166d16213614b624f3388}} 
 \index{Tree@{Tree}!Collect\+Tree\+Nodes\+Info\+Recursively@{Collect\+Tree\+Nodes\+Info\+Recursively}}
@@ -144,25 +146,25 @@ a vector of strings
 \end{DoxyReturn}
 
 
-Definition at line 128 of file Tree.\+cpp.
+Definition at line 133 of file Tree.\+cpp.
 
 
 \begin{DoxyCode}
-128                                                            \{
-129   
-130   std::vector<std::string>* tree\_nodes\_info = \textcolor{keyword}{new} std::vector<std::string>;
-131   
-132   std::cerr << \textcolor{stringliteral}{"at tree root\(\backslash\)n"};
-133   tree\_nodes\_info = current\_root->\hyperlink{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}{GetNodeInfo}(tree\_nodes\_info);
+133                                                            \{
 134   
-135   \textcolor{keywordflow}{return} tree\_nodes\_info;
-136 \}
+135   std::vector<std::string>* tree\_nodes\_info = \textcolor{keyword}{new} std::vector<std::string>;
+136   
+137   std::cerr << \textcolor{stringliteral}{"at tree root\(\backslash\)n"};
+138   tree\_nodes\_info = current\_root->\hyperlink{classNode_aeb57ef43b22fa37c2855ebb07e4e7331}{GetNodeInfo}(tree\_nodes\_info);
+139   
+140   \textcolor{keywordflow}{return} tree\_nodes\_info;
+141 \}
 \end{DoxyCode}
-\mbox{\Hypertarget{classTree_ac456dedd5e42bb0fea807aeb526e5a93}\label{classTree_ac456dedd5e42bb0fea807aeb526e5a93}} 
+\mbox{\Hypertarget{classTree_a1033914891d96918380c1770a179b670}\label{classTree_a1033914891d96918380c1770a179b670}} 
 \index{Tree@{Tree}!Create\+Bifurcating\+Tree@{Create\+Bifurcating\+Tree}}
 \index{Create\+Bifurcating\+Tree@{Create\+Bifurcating\+Tree}!Tree@{Tree}}
 \subsubsection{\texorpdfstring{Create\+Bifurcating\+Tree()}{CreateBifurcatingTree()}}
-{\footnotesize\ttfamily void Tree\+::\+Create\+Bifurcating\+Tree (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{alignment }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Tree\+::\+Create\+Bifurcating\+Tree (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{alignment }\end{DoxyParamCaption})}
 
 This method creates a bifurcating tree. This method creates as many internodes as required to yield a bifurcating tree.
 
@@ -173,38 +175,41 @@ This method creates a bifurcating tree. This method creates as many internodes a
 \end{DoxyParams}
 
 
-Definition at line 99 of file Tree.\+cpp.
+Definition at line 101 of file Tree.\+cpp.
 
 
 \begin{DoxyCode}
-99                                                                \{
-100   
-101   \textcolor{keywordtype}{int} current\_node\_index = alignment->size();
+101                                                               \{
 102   
-103   \textcolor{comment}{//we need to initialize the root node}
-104   \hyperlink{classNode}{Node}* current\_root = \textcolor{keyword}{new} \hyperlink{classNode}{Node}();
-105   current\_root->\hyperlink{classNode_a89bff92e3930d521439395ccf332418f}{SetIsTip}(\textcolor{keyword}{false});
-106   current\_root->\hyperlink{classNode_a6f2acc7b954108a6fe266838fce50ef6}{SetIndex}(current\_node\_index);
-107   
-108   \textcolor{comment}{//once the root node has been initialized we add it as the tree root and to the list of tree nodes}
-109   this->\hyperlink{classTree_ae592faa2c1f2da3cc1157bd9a4b884b5}{SetRoot}(current\_root);
-110   this->\hyperlink{classTree_aba172068387b9b5be1a6750a30e8199a}{AddToNodeVector}(current\_root);
-111   
-112   std::cerr << \textcolor{stringliteral}{"Creating bifurcating tree with "} << current\_node\_index << \textcolor{stringliteral}{" species\(\backslash\)n"};
-113 
-114   current\_node\_index = current\_node\_index + 1;
-115   
-116   \textcolor{comment}{//we initialize the tip nodes using the alignment provided by the user}
-117   current\_root->\hyperlink{classNode_a188e5d00d54887dc3490837f2f025abf}{CreateBifurcatingNode}(this->InitializeTipNodes(alignment), &
-      current\_node\_index, &tree\_nodes);
-118   
-119 \}
+103   \textcolor{keywordtype}{int} current\_node\_index = alignment->size();
+104   
+105   \textcolor{comment}{//we need to initialize the root node}
+106   \hyperlink{classNode}{Node}* current\_root = \textcolor{keyword}{new} \hyperlink{classNode}{Node}();
+107   current\_root->\hyperlink{classNode_a89bff92e3930d521439395ccf332418f}{SetIsTip}(\textcolor{keyword}{false});
+108   current\_root->\hyperlink{classNode_a6f2acc7b954108a6fe266838fce50ef6}{SetIndex}(current\_node\_index);
+109   
+110   \textcolor{comment}{//once the root node has been initialized we add it as the tree root and to the list of tree nodes}
+111   this->\hyperlink{classTree_ae592faa2c1f2da3cc1157bd9a4b884b5}{SetRoot}(current\_root);
+112   this->\hyperlink{classTree_aba172068387b9b5be1a6750a30e8199a}{AddToNodeVector}(current\_root);
+113   
+114   std::cerr << \textcolor{stringliteral}{"Creating bifurcating tree with "} << current\_node\_index << \textcolor{stringliteral}{" species\(\backslash\)n"};
+115 
+116   current\_node\_index = current\_node\_index + 1;
+117   
+118   \textcolor{comment}{//we initialize the tip nodes using the alignment provided by the user}
+119   current\_root->\hyperlink{classNode_aed21bd99e0d680ea7c6a1524e989b9d4}{CreateBifurcatingNode}(this->InitializeTipNodes(alignment), 
+      current\_node\_index, tree\_nodes);
+120   
+121   \textcolor{comment}{//return the total number of nodes in the tree}
+122   \textcolor{keywordflow}{return} current\_node\_index;
+123   
+124 \}
 \end{DoxyCode}
-\mbox{\Hypertarget{classTree_ac446f0f8211fcc033502690a9a164e95}\label{classTree_ac446f0f8211fcc033502690a9a164e95}} 
+\mbox{\Hypertarget{classTree_a489e5392997aebd8ae98c97fb4fdb0a0}\label{classTree_a489e5392997aebd8ae98c97fb4fdb0a0}} 
 \index{Tree@{Tree}!Create\+Star\+Tree@{Create\+Star\+Tree}}
 \index{Create\+Star\+Tree@{Create\+Star\+Tree}!Tree@{Tree}}
 \subsubsection{\texorpdfstring{Create\+Star\+Tree()}{CreateStarTree()}}
-{\footnotesize\ttfamily void Tree\+::\+Create\+Star\+Tree (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{alignment }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily int Tree\+::\+Create\+Star\+Tree (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ $\ast$}]{alignment }\end{DoxyParamCaption})}
 
 This method creates a star tree. This tree adds all the tip nodes in one alignment to the root node.
 
@@ -219,7 +224,7 @@ Definition at line 64 of file Tree.\+cpp.
 
 
 \begin{DoxyCode}
-64                                                         \{
+64                                                        \{
 65   
 66   std::cerr << \textcolor{stringliteral}{"Creating star tree\(\backslash\)n"};
 67   
@@ -248,7 +253,9 @@ Definition at line 64 of file Tree.\+cpp.
 89   \textcolor{comment}{//add root to the node vector  }
 90   this->\hyperlink{classTree_aba172068387b9b5be1a6750a30e8199a}{AddToNodeVector}(current\_root);
 91   
-92 \}
+92   \textcolor{keywordflow}{return} current\_root->\hyperlink{classNode_a90ff01054aa65ec8338b78a792ea4bfe}{GetIndex}();
+93   
+94 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classTree_a5812392cfc9ed68d1fc3713d708a5e8f}\label{classTree_a5812392cfc9ed68d1fc3713d708a5e8f}} 
 \index{Tree@{Tree}!Get\+Length@{Get\+Length}}
@@ -286,6 +293,35 @@ Definition at line 33 of file Tree.\+cpp.
 36   
 37 \}
 \end{DoxyCode}
+\mbox{\Hypertarget{classTree_a27d9ae5dc8700822a6091eff1e548600}\label{classTree_a27d9ae5dc8700822a6091eff1e548600}} 
+\index{Tree@{Tree}!Get\+Tree\+In\+Newick\+Format@{Get\+Tree\+In\+Newick\+Format}}
+\index{Get\+Tree\+In\+Newick\+Format@{Get\+Tree\+In\+Newick\+Format}!Tree@{Tree}}
+\subsubsection{\texorpdfstring{Get\+Tree\+In\+Newick\+Format()}{GetTreeInNewickFormat()}}
+{\footnotesize\ttfamily std\+::string Tree\+::\+Get\+Tree\+In\+Newick\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This methods recursively calls every \hyperlink{classNode}{Node} in the tree and produces a string with the tree in newick format.
+
+\begin{DoxyReturn}{Returns}
+a string object with the tree in newick format. 
+\end{DoxyReturn}
+
+
+Definition at line 196 of file Tree.\+cpp.
+
+
+\begin{DoxyCode}
+196                                      \{
+197   
+198   std::string newick\_tree;
+199   
+200   current\_root->\hyperlink{classNode_aa7c6c2500e38ecf478b9141188f1c840}{GetNodeInfoInNewickFormat}(newick\_tree);
+201   
+202   newick\_tree.append(\textcolor{stringliteral}{";"});
+203   
+204   \textcolor{keywordflow}{return} newick\_tree;
+205   
+206 \}
+\end{DoxyCode}
 \mbox{\Hypertarget{classTree_a390ab7f66c8c33fe6780a372263d6d38}\label{classTree_a390ab7f66c8c33fe6780a372263d6d38}} 
 \index{Tree@{Tree}!Get\+Tree\+Nodes@{Get\+Tree\+Nodes}}
 \index{Get\+Tree\+Nodes@{Get\+Tree\+Nodes}!Tree@{Tree}}
@@ -312,16 +348,16 @@ Definition at line 45 of file Tree.\+cpp.
 
 In case we need to update the list of Nodes in the tree\+\_\+nodes list, this method should provide a way to get pointers to all the nodes in the tree recursively 
 
-Definition at line 178 of file Tree.\+cpp.
+Definition at line 183 of file Tree.\+cpp.
 
 
 \begin{DoxyCode}
-178                             \{
-179    
-180   std::cerr << \textcolor{stringliteral}{"at tree root\(\backslash\)n"};
-181   current\_root->\hyperlink{classNode_a8e58dc16fc38e2076c7ddbe5b9f04177}{GetNodePointer}(&tree\_nodes);
-182   
-183 \}
+183                             \{
+184    
+185   std::cerr << \textcolor{stringliteral}{"at tree root\(\backslash\)n"};
+186   current\_root->\hyperlink{classNode_a8e58dc16fc38e2076c7ddbe5b9f04177}{GetNodePointer}(&tree\_nodes);
+187   
+188 \}
 \end{DoxyCode}
 \mbox{\Hypertarget{classTree_aa16a8485326ce51d6d7324f23066eb27}\label{classTree_aa16a8485326ce51d6d7324f23066eb27}} 
 \index{Tree@{Tree}!Set\+Length@{Set\+Length}}

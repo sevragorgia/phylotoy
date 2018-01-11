@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inputreader',['InputReader',['../classInputReader.html',1,'']]]
+  ['distributionsampler',['DistributionSampler',['../classDistributionSampler.html',1,'']]]
 ];

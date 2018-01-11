@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['outputprinter',['OutputPrinter',['../classOutputPrinter.html',1,'OutputPrinter'],['../classOutputPrinter.html#abbf799e4a04980138e93d633beb5e58b',1,'OutputPrinter::OutputPrinter()']]],
-  ['outputprinter_2ecpp',['OutputPrinter.cpp',['../OutputPrinter_8cpp.html',1,'']]],
-  ['outputprinter_2eh',['OutputPrinter.h',['../OutputPrinter_8h.html',1,'']]]
+  ['node',['Node',['../classNode.html',1,'Node'],['../classNode.html#ad7a34779cad45d997bfd6d3d8043c75f',1,'Node::Node()']]],
+  ['node_2ecpp',['Node.cpp',['../Node_8cpp.html',1,'']]],
+  ['node_2eh',['Node.h',['../Node_8h.html',1,'']]]
 ];

@@ -1,6 +1,26 @@
 var searchData=
 [
-  ['tree',['Tree',['../classTree.html',1,'Tree'],['../classTree.html#ad376a7c639d857312f5de2ef47482f68',1,'Tree::Tree()']]],
-  ['tree_2ecpp',['Tree.cpp',['../Tree_8cpp.html',1,'']]],
-  ['tree_2eh',['Tree.h',['../Tree_8h.html',1,'']]]
+  ['samplefromexponential',['SampleFromExponential',['../classDistributionSampler.html#a05dfeef7e98478c472fe40a4526fb45a',1,'DistributionSampler']]],
+  ['samplefromgamma',['SampleFromGamma',['../classDistributionSampler.html#a7d4b24735ccfdca2e1afee56312c3acc',1,'DistributionSampler']]],
+  ['samplefromintuniform',['SampleFromIntUniform',['../classDistributionSampler.html#a9b8f106eeb87f623ab457bd67ea7bfac',1,'DistributionSampler']]],
+  ['samplefromrealuniform',['SampleFromRealUniform',['../classDistributionSampler.html#a7401a5bf7143ee3fe0734257fddd1145',1,'DistributionSampler']]],
+  ['setalignmentfilepath',['SetAlignmentFilePath',['../classController.html#a67b2357dbc00faba0f6557f3660e8711',1,'Controller']]],
+  ['setblexponentialmean',['SetBLExponentialMean',['../classController.html#ab3192e74f31bbe2e7faf70d497c67e9b',1,'Controller']]],
+  ['setbluniformmax',['SetBLUniformMax',['../classController.html#ab75b88551fab21ddd99e748e21f6a334',1,'Controller']]],
+  ['setbluniformmin',['SetBLUniformMin',['../classController.html#ab3b26fcf8f00ea5980bf7941dc24bb0b',1,'Controller']]],
+  ['setchainname',['SetChainName',['../classController.html#aa122ac902c36eeb2889e12558d4ad087',1,'Controller']]],
+  ['setchildvector',['SetChildVector',['../classNode.html#a7480924f7879b04fe8c787f42ee888fe',1,'Node']]],
+  ['setindex',['SetIndex',['../classNode.html#a6f2acc7b954108a6fe266838fce50ef6',1,'Node']]],
+  ['setistip',['SetIsTip',['../classNode.html#a89bff92e3930d521439395ccf332418f',1,'Node']]],
+  ['setlength',['SetLength',['../classTree.html#aa16a8485326ce51d6d7324f23066eb27',1,'Tree']]],
+  ['setlengthsubtendingbranch',['SetLengthSubtendingBranch',['../classNode.html#a9d7592d6bf479825eb411a244f4d7ad2',1,'Node']]],
+  ['setnumberofgenerations',['SetNumberOfGenerations',['../classController.html#aa42d6aa39fd621b739f2d86295e0b943',1,'Controller']]],
+  ['setparentnode',['SetParentNode',['../classNode.html#acb22b8f28ca70e1316a6bafc375ee352',1,'Node']]],
+  ['setpath',['SetPath',['../classInputReader.html#a7b83b6aef68762bfc59a9958c4768da7',1,'InputReader']]],
+  ['setrandomnumbergeneratorseed',['SetRandomNumberGeneratorSeed',['../classDistributionSampler.html#ae5a6fec26e2dd0f149d3fc528a92ad4e',1,'DistributionSampler']]],
+  ['setrandomseed',['SetRandomSeed',['../classController.html#a1438b54d76df7239f361bd93dfbf9246',1,'Controller']]],
+  ['setroot',['SetRoot',['../classTree.html#ae592faa2c1f2da3cc1157bd9a4b884b5',1,'Tree']]],
+  ['setsequence',['SetSequence',['../classNode.html#af92559fbef1938022d59b2902703afaa',1,'Node']]],
+  ['setspeciesname',['SetSpeciesName',['../classNode.html#af4ba012237c10c42f2118e629633b844',1,'Node']]],
+  ['settreenodes',['SetTreeNodes',['../classTree.html#a429c0d87d451e9b219e4d001923c7134',1,'Tree']]]
 ];

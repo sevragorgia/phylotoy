@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['node_2ecpp',['Node.cpp',['../Node_8cpp.html',1,'']]],
-  ['node_2eh',['Node.h',['../Node_8h.html',1,'']]]
+  ['inputreader_2ecpp',['InputReader.cpp',['../InputReader_8cpp.html',1,'']]],
+  ['inputreader_2eh',['InputReader.h',['../InputReader_8h.html',1,'']]]
 ];

@@ -1,32 +1,36 @@
 \begin{theindex}
 
   \item {/home/sergio/\+Repos/phylotoy/src/\+Controller.\+cpp}, 
-		\hyperpage{27}
+		\hyperpage{35}
   \item {/home/sergio/\+Repos/phylotoy/src/\+Controller.\+h}, 
-		\hyperpage{27}
+		\hyperpage{35}
+  \item {/home/sergio/\+Repos/phylotoy/src/\+Distribution\+Sampler.\+cpp}, 
+		\hyperpage{35}
+  \item {/home/sergio/\+Repos/phylotoy/src/\+Distribution\+Sampler.\+h}, 
+		\hyperpage{36}
   \item {/home/sergio/\+Repos/phylotoy/src/\+Input\+Reader.\+cpp}, 
-		\hyperpage{27}
+		\hyperpage{36}
   \item {/home/sergio/\+Repos/phylotoy/src/\+Input\+Reader.\+h}, 
-		\hyperpage{28}
+		\hyperpage{36}
   \item {/home/sergio/\+Repos/phylotoy/src/\+Node.\+cpp}, 
-		\hyperpage{28}
-  \item {/home/sergio/\+Repos/phylotoy/src/\+Node.\+h}, \hyperpage{28}
+		\hyperpage{36}
+  \item {/home/sergio/\+Repos/phylotoy/src/\+Node.\+h}, \hyperpage{36}
   \item {/home/sergio/\+Repos/phylotoy/src/\+Output\+Printer.\+cpp}, 
-		\hyperpage{28}
+		\hyperpage{37}
   \item {/home/sergio/\+Repos/phylotoy/src/\+Output\+Printer.\+h}, 
-		\hyperpage{28}
+		\hyperpage{37}
   \item {/home/sergio/\+Repos/phylotoy/src/\+Phylotoy.\+cpp}, 
-		\hyperpage{29}
+		\hyperpage{37}
   \item {/home/sergio/\+Repos/phylotoy/src/\+Tree.\+cpp}, 
-		\hyperpage{30}
-  \item {/home/sergio/\+Repos/phylotoy/src/\+Tree.\+h}, \hyperpage{30}
+		\hyperpage{39}
+  \item {/home/sergio/\+Repos/phylotoy/src/\+Tree.\+h}, \hyperpage{39}
 
   \indexspace
 
   \item {Add\+Node\+To\+Child\+Vector}
-    \subitem {Node}, \hyperpage{13}
+    \subitem {Node}, \hyperpage{20}
   \item {Add\+To\+Node\+Vector}
-    \subitem {Tree}, \hyperpage{21}
+    \subitem {Tree}, \hyperpage{29}
 
   \indexspace
 
@@ -36,171 +40,221 @@
     \subitem {Controller}, \hyperpage{6}
   \item {Check\+Chain\+Name}
     \subitem {Controller}, \hyperpage{6}
+  \item {Check\+Number\+Of\+Generations}
+    \subitem {Controller}, \hyperpage{7}
   \item {Check\+Random\+Seed}
     \subitem {Controller}, \hyperpage{7}
   \item {Collect\+Tree\+Nodes\+Info\+Iteratively}
-    \subitem {Tree}, \hyperpage{22}
+    \subitem {Tree}, \hyperpage{29}
   \item {Collect\+Tree\+Nodes\+Info\+Recursively}
-    \subitem {Tree}, \hyperpage{22}
+    \subitem {Tree}, \hyperpage{30}
   \item {Controller}, \hyperpage{5}
     \subitem {Check\+Alignment\+File\+Path}, \hyperpage{6}
     \subitem {Check\+C\+L\+I\+Options}, \hyperpage{6}
     \subitem {Check\+Chain\+Name}, \hyperpage{6}
+    \subitem {Check\+Number\+Of\+Generations}, \hyperpage{7}
     \subitem {Check\+Random\+Seed}, \hyperpage{7}
     \subitem {Controller}, \hyperpage{5}
-    \subitem {Get\+Alignment\+File\+Path}, \hyperpage{7}
-    \subitem {Get\+Chain\+Name}, \hyperpage{7}
-    \subitem {Get\+Random\+Seed}, \hyperpage{8}
-    \subitem {Run}, \hyperpage{8}
-    \subitem {Set\+Alignment\+File\+Path}, \hyperpage{9}
-    \subitem {Set\+Chain\+Name}, \hyperpage{9}
-    \subitem {Set\+Random\+Seed}, \hyperpage{9}
+    \subitem {Get\+Alignment\+File\+Path}, \hyperpage{8}
+    \subitem {Get\+B\+L\+Exponential\+Mean}, \hyperpage{8}
+    \subitem {Get\+B\+L\+Uniform\+Max}, \hyperpage{8}
+    \subitem {Get\+B\+L\+Uniform\+Min}, \hyperpage{9}
+    \subitem {Get\+Chain\+Name}, \hyperpage{9}
+    \subitem {Get\+Random\+Seed}, \hyperpage{9}
+    \subitem {Run}, \hyperpage{10}
+    \subitem {Set\+Alignment\+File\+Path}, \hyperpage{10}
+    \subitem {Set\+B\+L\+Exponential\+Mean}, \hyperpage{11}
+    \subitem {Set\+B\+L\+Uniform\+Max}, \hyperpage{11}
+    \subitem {Set\+B\+L\+Uniform\+Min}, \hyperpage{12}
+    \subitem {Set\+Chain\+Name}, \hyperpage{12}
+    \subitem {Set\+Number\+Of\+Generations}, \hyperpage{12}
+    \subitem {Set\+Random\+Seed}, \hyperpage{14}
   \item {Create\+Bifurcating\+Node}
-    \subitem {Node}, \hyperpage{13}
+    \subitem {Node}, \hyperpage{20}
   \item {Create\+Bifurcating\+Tree}
-    \subitem {Tree}, \hyperpage{23}
+    \subitem {Tree}, \hyperpage{30}
   \item {Create\+Star\+Tree}
-    \subitem {Tree}, \hyperpage{24}
+    \subitem {Tree}, \hyperpage{31}
+
+  \indexspace
+
+  \item {Distribution\+Sampler}, \hyperpage{14}
+    \subitem {Distribution\+Sampler}, \hyperpage{15}
+    \subitem {Sample\+From\+Exponential}, \hyperpage{15}
+    \subitem {Sample\+From\+Gamma}, \hyperpage{15}
+    \subitem {Sample\+From\+Int\+Uniform}, \hyperpage{16}
+    \subitem {Sample\+From\+Real\+Uniform}, \hyperpage{16}
+    \subitem {Set\+Random\+Number\+Generator\+Seed}, \hyperpage{16}
 
   \indexspace
 
   \item {Get\+Alignment\+File\+Path}
-    \subitem {Controller}, \hyperpage{7}
-  \item {Get\+Chain\+Name}
-    \subitem {Controller}, \hyperpage{7}
-  \item {Get\+Child\+Vector}
-    \subitem {Node}, \hyperpage{14}
-  \item {Get\+Index}
-    \subitem {Node}, \hyperpage{14}
-  \item {Get\+Is\+Tip}
-    \subitem {Node}, \hyperpage{15}
-  \item {Get\+Length}
-    \subitem {Tree}, \hyperpage{24}
-  \item {Get\+Length\+Subtending\+Branch}
-    \subitem {Node}, \hyperpage{15}
-  \item {Get\+Node\+Info}
-    \subitem {Node}, \hyperpage{15}
-  \item {Get\+Node\+Pointer}
-    \subitem {Node}, \hyperpage{16}
-  \item {Get\+Parent\+Node}
-    \subitem {Node}, \hyperpage{17}
-  \item {Get\+Path}
-    \subitem {Input\+Reader}, \hyperpage{11}
-  \item {Get\+Random\+Seed}
     \subitem {Controller}, \hyperpage{8}
+  \item {Get\+B\+L\+Exponential\+Mean}
+    \subitem {Controller}, \hyperpage{8}
+  \item {Get\+B\+L\+Uniform\+Max}
+    \subitem {Controller}, \hyperpage{8}
+  \item {Get\+B\+L\+Uniform\+Min}
+    \subitem {Controller}, \hyperpage{9}
+  \item {Get\+Chain\+Name}
+    \subitem {Controller}, \hyperpage{9}
+  \item {Get\+Child\+Vector}
+    \subitem {Node}, \hyperpage{21}
+  \item {Get\+Index}
+    \subitem {Node}, \hyperpage{22}
+  \item {Get\+Is\+Tip}
+    \subitem {Node}, \hyperpage{22}
+  \item {Get\+Length}
+    \subitem {Tree}, \hyperpage{32}
+  \item {Get\+Length\+Subtending\+Branch}
+    \subitem {Node}, \hyperpage{22}
+  \item {Get\+Node\+Info}
+    \subitem {Node}, \hyperpage{22}
+  \item {Get\+Node\+Info\+In\+Newick\+Format}
+    \subitem {Node}, \hyperpage{23}
+  \item {Get\+Node\+Pointer}
+    \subitem {Node}, \hyperpage{24}
+  \item {Get\+Parent\+Node}
+    \subitem {Node}, \hyperpage{24}
+  \item {Get\+Path}
+    \subitem {Input\+Reader}, \hyperpage{18}
+  \item {Get\+Random\+Seed}
+    \subitem {Controller}, \hyperpage{9}
   \item {Get\+Root}
-    \subitem {Tree}, \hyperpage{24}
+    \subitem {Tree}, \hyperpage{32}
   \item {Get\+Sequence}
-    \subitem {Node}, \hyperpage{17}
+    \subitem {Node}, \hyperpage{25}
   \item {Get\+Species\+Name}
-    \subitem {Node}, \hyperpage{17}
+    \subitem {Node}, \hyperpage{25}
+  \item {Get\+Tree\+In\+Newick\+Format}
+    \subitem {Tree}, \hyperpage{32}
   \item {Get\+Tree\+Node\+Vector}
-    \subitem {Tree}, \hyperpage{25}
+    \subitem {Tree}, \hyperpage{33}
   \item {Get\+Tree\+Nodes}
-    \subitem {Tree}, \hyperpage{25}
+    \subitem {Tree}, \hyperpage{33}
 
   \indexspace
 
-  \item {Input\+Reader}, \hyperpage{10}
-    \subitem {Get\+Path}, \hyperpage{11}
-    \subitem {Input\+Reader}, \hyperpage{10}
-    \subitem {Read\+Input\+File}, \hyperpage{11}
-    \subitem {Set\+Path}, \hyperpage{12}
+  \item {Input\+Reader}, \hyperpage{17}
+    \subitem {Get\+Path}, \hyperpage{18}
+    \subitem {Input\+Reader}, \hyperpage{17}
+    \subitem {Read\+Input\+File}, \hyperpage{18}
+    \subitem {Set\+Path}, \hyperpage{19}
 
   \indexspace
 
   \item {main}
-    \subitem {Phylotoy.\+cpp}, \hyperpage{29}
+    \subitem {Phylotoy.\+cpp}, \hyperpage{37}
 
   \indexspace
 
-  \item {Node}, \hyperpage{12}
-    \subitem {Add\+Node\+To\+Child\+Vector}, \hyperpage{13}
-    \subitem {Create\+Bifurcating\+Node}, \hyperpage{13}
-    \subitem {Get\+Child\+Vector}, \hyperpage{14}
-    \subitem {Get\+Index}, \hyperpage{14}
-    \subitem {Get\+Is\+Tip}, \hyperpage{15}
-    \subitem {Get\+Length\+Subtending\+Branch}, \hyperpage{15}
-    \subitem {Get\+Node\+Info}, \hyperpage{15}
-    \subitem {Get\+Node\+Pointer}, \hyperpage{16}
-    \subitem {Get\+Parent\+Node}, \hyperpage{17}
-    \subitem {Get\+Sequence}, \hyperpage{17}
-    \subitem {Get\+Species\+Name}, \hyperpage{17}
-    \subitem {Node}, \hyperpage{13}
-    \subitem {Set\+Child\+Vector}, \hyperpage{17}
-    \subitem {Set\+Index}, \hyperpage{18}
-    \subitem {Set\+Is\+Tip}, \hyperpage{18}
-    \subitem {Set\+Length\+Subtending\+Branch}, \hyperpage{18}
-    \subitem {Set\+Parent\+Node}, \hyperpage{18}
-    \subitem {Set\+Sequence}, \hyperpage{19}
-    \subitem {Set\+Species\+Name}, \hyperpage{19}
+  \item {Node}, \hyperpage{19}
+    \subitem {Add\+Node\+To\+Child\+Vector}, \hyperpage{20}
+    \subitem {Create\+Bifurcating\+Node}, \hyperpage{20}
+    \subitem {Get\+Child\+Vector}, \hyperpage{21}
+    \subitem {Get\+Index}, \hyperpage{22}
+    \subitem {Get\+Is\+Tip}, \hyperpage{22}
+    \subitem {Get\+Length\+Subtending\+Branch}, \hyperpage{22}
+    \subitem {Get\+Node\+Info}, \hyperpage{22}
+    \subitem {Get\+Node\+Info\+In\+Newick\+Format}, \hyperpage{23}
+    \subitem {Get\+Node\+Pointer}, \hyperpage{24}
+    \subitem {Get\+Parent\+Node}, \hyperpage{24}
+    \subitem {Get\+Sequence}, \hyperpage{25}
+    \subitem {Get\+Species\+Name}, \hyperpage{25}
+    \subitem {Node}, \hyperpage{20}
+    \subitem {Set\+Child\+Vector}, \hyperpage{25}
+    \subitem {Set\+Index}, \hyperpage{25}
+    \subitem {Set\+Is\+Tip}, \hyperpage{26}
+    \subitem {Set\+Length\+Subtending\+Branch}, \hyperpage{26}
+    \subitem {Set\+Parent\+Node}, \hyperpage{26}
+    \subitem {Set\+Sequence}, \hyperpage{26}
+    \subitem {Set\+Species\+Name}, \hyperpage{27}
 
   \indexspace
 
-  \item {Output\+Printer}, \hyperpage{19}
-    \subitem {Output\+Printer}, \hyperpage{20}
-    \subitem {Print\+Message2\+Out}, \hyperpage{20}
+  \item {Output\+Printer}, \hyperpage{27}
+    \subitem {Output\+Printer}, \hyperpage{28}
+    \subitem {Print\+Message2\+Out}, \hyperpage{28}
 
   \indexspace
 
   \item {Phylotoy.\+cpp}
-    \subitem {main}, \hyperpage{29}
+    \subitem {main}, \hyperpage{37}
   \item {Print\+Message2\+Out}
-    \subitem {Output\+Printer}, \hyperpage{20}
+    \subitem {Output\+Printer}, \hyperpage{28}
 
   \indexspace
 
   \item {Read\+Input\+File}
-    \subitem {Input\+Reader}, \hyperpage{11}
+    \subitem {Input\+Reader}, \hyperpage{18}
   \item {Run}
-    \subitem {Controller}, \hyperpage{8}
+    \subitem {Controller}, \hyperpage{10}
 
   \indexspace
 
+  \item {Sample\+From\+Exponential}
+    \subitem {Distribution\+Sampler}, \hyperpage{15}
+  \item {Sample\+From\+Gamma}
+    \subitem {Distribution\+Sampler}, \hyperpage{15}
+  \item {Sample\+From\+Int\+Uniform}
+    \subitem {Distribution\+Sampler}, \hyperpage{16}
+  \item {Sample\+From\+Real\+Uniform}
+    \subitem {Distribution\+Sampler}, \hyperpage{16}
   \item {Set\+Alignment\+File\+Path}
-    \subitem {Controller}, \hyperpage{9}
+    \subitem {Controller}, \hyperpage{10}
+  \item {Set\+B\+L\+Exponential\+Mean}
+    \subitem {Controller}, \hyperpage{11}
+  \item {Set\+B\+L\+Uniform\+Max}
+    \subitem {Controller}, \hyperpage{11}
+  \item {Set\+B\+L\+Uniform\+Min}
+    \subitem {Controller}, \hyperpage{12}
   \item {Set\+Chain\+Name}
-    \subitem {Controller}, \hyperpage{9}
+    \subitem {Controller}, \hyperpage{12}
   \item {Set\+Child\+Vector}
-    \subitem {Node}, \hyperpage{17}
+    \subitem {Node}, \hyperpage{25}
   \item {Set\+Index}
-    \subitem {Node}, \hyperpage{18}
+    \subitem {Node}, \hyperpage{25}
   \item {Set\+Is\+Tip}
-    \subitem {Node}, \hyperpage{18}
+    \subitem {Node}, \hyperpage{26}
   \item {Set\+Length}
-    \subitem {Tree}, \hyperpage{25}
+    \subitem {Tree}, \hyperpage{33}
   \item {Set\+Length\+Subtending\+Branch}
-    \subitem {Node}, \hyperpage{18}
+    \subitem {Node}, \hyperpage{26}
+  \item {Set\+Number\+Of\+Generations}
+    \subitem {Controller}, \hyperpage{12}
   \item {Set\+Parent\+Node}
-    \subitem {Node}, \hyperpage{18}
+    \subitem {Node}, \hyperpage{26}
   \item {Set\+Path}
-    \subitem {Input\+Reader}, \hyperpage{12}
+    \subitem {Input\+Reader}, \hyperpage{19}
+  \item {Set\+Random\+Number\+Generator\+Seed}
+    \subitem {Distribution\+Sampler}, \hyperpage{16}
   \item {Set\+Random\+Seed}
-    \subitem {Controller}, \hyperpage{9}
+    \subitem {Controller}, \hyperpage{14}
   \item {Set\+Root}
-    \subitem {Tree}, \hyperpage{25}
+    \subitem {Tree}, \hyperpage{34}
   \item {Set\+Sequence}
-    \subitem {Node}, \hyperpage{19}
+    \subitem {Node}, \hyperpage{26}
   \item {Set\+Species\+Name}
-    \subitem {Node}, \hyperpage{19}
+    \subitem {Node}, \hyperpage{27}
   \item {Set\+Tree\+Nodes}
-    \subitem {Tree}, \hyperpage{26}
+    \subitem {Tree}, \hyperpage{34}
 
   \indexspace
 
-  \item {Tree}, \hyperpage{20}
-    \subitem {Add\+To\+Node\+Vector}, \hyperpage{21}
-    \subitem {Collect\+Tree\+Nodes\+Info\+Iteratively}, \hyperpage{22}
-    \subitem {Collect\+Tree\+Nodes\+Info\+Recursively}, \hyperpage{22}
-    \subitem {Create\+Bifurcating\+Tree}, \hyperpage{23}
-    \subitem {Create\+Star\+Tree}, \hyperpage{24}
-    \subitem {Get\+Length}, \hyperpage{24}
-    \subitem {Get\+Root}, \hyperpage{24}
-    \subitem {Get\+Tree\+Node\+Vector}, \hyperpage{25}
-    \subitem {Get\+Tree\+Nodes}, \hyperpage{25}
-    \subitem {Set\+Length}, \hyperpage{25}
-    \subitem {Set\+Root}, \hyperpage{25}
-    \subitem {Set\+Tree\+Nodes}, \hyperpage{26}
-    \subitem {Tree}, \hyperpage{21}
+  \item {Tree}, \hyperpage{28}
+    \subitem {Add\+To\+Node\+Vector}, \hyperpage{29}
+    \subitem {Collect\+Tree\+Nodes\+Info\+Iteratively}, \hyperpage{29}
+    \subitem {Collect\+Tree\+Nodes\+Info\+Recursively}, \hyperpage{30}
+    \subitem {Create\+Bifurcating\+Tree}, \hyperpage{30}
+    \subitem {Create\+Star\+Tree}, \hyperpage{31}
+    \subitem {Get\+Length}, \hyperpage{32}
+    \subitem {Get\+Root}, \hyperpage{32}
+    \subitem {Get\+Tree\+In\+Newick\+Format}, \hyperpage{32}
+    \subitem {Get\+Tree\+Node\+Vector}, \hyperpage{33}
+    \subitem {Get\+Tree\+Nodes}, \hyperpage{33}
+    \subitem {Set\+Length}, \hyperpage{33}
+    \subitem {Set\+Root}, \hyperpage{34}
+    \subitem {Set\+Tree\+Nodes}, \hyperpage{34}
+    \subitem {Tree}, \hyperpage{29}
 
 \end{theindex}

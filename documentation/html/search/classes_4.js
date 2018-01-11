@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tree',['Tree',['../classTree.html',1,'']]]
+  ['outputprinter',['OutputPrinter',['../classOutputPrinter.html',1,'']]]
 ];

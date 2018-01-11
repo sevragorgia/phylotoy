@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['readinputfile',['ReadInputFile',['../classInputReader.html#ad16dc3ebc228f45257b9ad4c3f62ed14',1,'InputReader']]],
-  ['run',['Run',['../classController.html#a17abb2cec6c0109e9b2df3cdc082eaad',1,'Controller']]]
+  ['printmessage2out',['PrintMessage2Out',['../classOutputPrinter.html#ae9cd642df56fb6febef4cccff7ca12f2',1,'OutputPrinter']]]
 ];
