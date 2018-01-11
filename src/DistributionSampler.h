@@ -19,10 +19,13 @@ class DistributionSampler {
     
     void SetRandomNumberGeneratorSeed(int seed);
     
-    double SampleBLFromUniform(double min, double max);
+    int SampleFromIntUniform(int min, int max);
     
-    int SampleRandomNode(int total_nodes);
-  
+    double SampleFromRealUniform(double min, double max);
+    
+    double SampleFromExponential(double mean);
+    
+    double SampleFromGamma(double alpha, double beta);
   
   
     

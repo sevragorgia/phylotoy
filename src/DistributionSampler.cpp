@@ -19,34 +19,58 @@ void DistributionSampler::SetRandomNumberGeneratorSeed(int seed){
   
 }
 
+
 /**
- * This method samples from a uniform distribution a real number that will be use to set the branch lenghts of the tree
+ * This method samples from a uniform distribution an integer number
  * 
  */
-double DistributionSampler::SampleBLFromUniform(double min, double max){
+int DistributionSampler::SampleFromIntUniform(int min, int max){
   
-  std::uniform_real_distribution<double> uniform_bl_sampler(min, max);
+  std::uniform_int_distribution<int> uniform_int_sampler(min, max);
   
   std::cerr << "sampling branch length from real uniform distribution (" << min << "," << max << ")\n";
   
-  return uniform_bl_sampler(pseudo_random_number_gen);
+  return uniform_int_sampler(pseudo_random_number_gen);
   
 }
 
 /**
- * This method creates a lightweight uniform int distribution object and passes the total number of nodes in the tree as its upper bound
+ * This method samples from a uniform distribution a real number
  * 
- * We use this to select nodes at random 
  */
-int DistributionSampler::SampleRandomNode(int max){
+double DistributionSampler::SampleFromRealUniform(double min, double max){
   
-  std::uniform_int_distribution<int> node_index_sampler (0, max);
+  std::uniform_real_distribution<double> uniform_real_sampler(min, max);
   
-  std::cerr << "sampling random node\n";
-  return node_index_sampler(pseudo_random_number_gen);
+  std::cerr << "sampling branch length from real uniform distribution (" << min << "," << max << ")\n";
+  
+  return uniform_real_sampler(pseudo_random_number_gen);
+  
+}
+
+/**
+ * This method samples from an exponential distribution a real number
+ */
+double DistributionSampler::SampleFromExponential(double mean){
+  
+  std::exponential_distribution<double> exponential_sampler(mean);
+  
+  std::cerr << "sampling branch length from exponential distribution (" << mean << ")\n";
+  
+  return exponential_sampler(pseudo_random_number_gen);
   
 }
 
 
-
-
+/**
+ * This method samples from a gamma distribution a real number
+ */
+double DistributionSampler::SampleFromGamma(double alpha, double beta){
+  
+  std::gamma_distribution<double> gamma_sampler(alpha, beta);
+  
+  std::cerr << "sampling branch length from exponential distribution (" << alpha << "," << beta << ")\n";
+  
+  return gamma_sampler(pseudo_random_number_gen);
+  
+}

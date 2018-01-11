@@ -83,9 +83,8 @@ int main(int argc, char* argv[]) {
       }
       case 'e':
       {
-        phylotoy_controller.SetBLExponentialMean(atoi(optarg));
+        phylotoy_controller.SetBLExponentialMean(atof(optarg));
         break;
-        
       }
       case 'f':
       {

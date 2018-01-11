@@ -275,7 +275,8 @@ void Controller::Run() {
   
   for(int i=0; i < number_of_generations; i++){
     
-    std::cerr << "Select Node " << distribution_sampler.SampleRandomNode(number_of_nodes) << "\n";
-    std::cerr << "Sample BL  " << distribution_sampler.SampleBLFromUniform(bl_uniform_min, bl_uniform_max) << "\n";//need to implement this for the command line.
+    std::cerr << "Select Node " << distribution_sampler.SampleFromIntUniform(0,number_of_nodes) << "\n";
+    //std::cerr << "Sample BL  " << distribution_sampler.SampleBLFromUniform(bl_uniform_min, bl_uniform_max) << "\n";
+    std::cerr << "Sample BL  " << distribution_sampler.SampleFromExponential(bl_exponential_mean) << "\n";
   }
 }
