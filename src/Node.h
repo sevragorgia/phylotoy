@@ -16,7 +16,7 @@ private:
   std::string sequence;
   std::string species_name;
   int index;
-  float length_of_subtending_branch;
+  double length_of_subtending_branch;
   
   //descendants of this nodes, pointers to them. may need only left right
   std::vector<Node*> child_nodes;
@@ -42,8 +42,8 @@ public:
     void SetParentNode(Node* parent);
     Node* GetParentNode();
     
-    void SetLengthSubtendingBranch(float branch_length);
-    float GetLengthSubtendingBranch();
+    void SetLengthSubtendingBranch(double branch_length);
+    double GetLengthSubtendingBranch();
     
     void AddNodeToChildVector(Node* child);
     void SetChildVector(std::vector<Node*> childs);

@@ -11,13 +11,13 @@
 
 Tree::Tree(){}
   
-void Tree::SetLength(float length){
+void Tree::SetLength(double length){
 
     length = length;
   
 }
 
-float Tree::GetLength(){
+double Tree::GetLength(){
   
   return length;
   
@@ -60,6 +60,8 @@ void Tree::AddToNodeVector(Node* node){
  * This method creates a star tree. This tree adds all the tip nodes in one alignment to the root node.
  * 
  * @param alignment is a sequence alignment with species names and sequences separated by an empty space.
+ * 
+ * @returns current_root->GetIndex() is an int with the node count in the tree
  */
 int Tree::CreateStarTree(std::vector<std::string>* alignment){
   
@@ -97,6 +99,8 @@ int Tree::CreateStarTree(std::vector<std::string>* alignment){
 * This method creates a bifurcating tree. This method creates as many internodes as required to yield a bifurcating tree.
 * 
 * @param alignment is a sequence alignment stored on a vector of strings containing species names and sequencesseparated by an empty space.
+* 
+* @returns current_node_index is an int with the node count in the tree
 */
 int Tree::CreateBifurcatingTree(std::vector<std::string>* alignment){
   
@@ -204,6 +208,38 @@ std::string Tree::GetTreeInNewickFormat(){
   return newick_tree;
   
 }
+
+/**
+ * 
+ * 
+ */
+
+double Tree::InitializeBranchLengths(std::vector<double> branch_lengths){
+  
+  double tree_length = 0.0;
+  
+  std::vector<Node*> nodes = this->GetTreeNodes();
+  
+  if(branch_lengths.size() == nodes.size()){
+    
+    for(auto node : nodes){
+      
+      double branch_length = branch_lengths.back();
+      
+      node->SetLengthSubtendingBranch(branch_length);
+      
+      tree_length += branch_length;
+      
+      branch_lengths.pop_back();
+      
+    }
+  }
+  
+  return tree_length;
+  
+}
+
+
 
 //private methods
 

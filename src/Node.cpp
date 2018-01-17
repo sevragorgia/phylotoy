@@ -64,13 +64,13 @@ int Node::GetIndex(){
 }
 
 
-void Node::SetLengthSubtendingBranch(float branch_length) {
+void Node::SetLengthSubtendingBranch(double branch_length) {
   
   length_of_subtending_branch = branch_length;
   
 }
 
-float Node::GetLengthSubtendingBranch() {
+double Node::GetLengthSubtendingBranch() {
   
   return length_of_subtending_branch;
   
@@ -260,7 +260,8 @@ void Node::GetNodeInfoInNewickFormat(std::string& newick_tree){
   
   if(child_nodes.empty()){
     
-    newick_tree.append(species_name);
+    std::string child_node_info = species_name + ":" + std::to_string(length_of_subtending_branch);
+    newick_tree.append(child_node_info);
     
   }else {
     
@@ -283,7 +284,8 @@ void Node::GetNodeInfoInNewickFormat(std::string& newick_tree){
         
       }else {
         
-        newick_tree.append(")");
+        std::string internode_info = "):" + std::to_string(length_of_subtending_branch);
+        newick_tree.append(internode_info);
         
       }
     }

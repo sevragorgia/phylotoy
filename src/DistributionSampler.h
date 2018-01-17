@@ -25,6 +25,12 @@ class DistributionSampler {
     
     double SampleFromExponential(double mean);
     
+    std::vector<double> SampleFromExponential(int vector_size, double mean);
+/*    
+    double SampleFromUniformDirichlet(double mean);
+    
+    double SampleFromNonUniform(double mean);
+*/    
     double SampleFromGamma(double alpha, double beta);
   
   

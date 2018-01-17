@@ -273,10 +273,18 @@ void Controller::Run() {
   
   int number_of_nodes = phylo_tree.CreateBifurcatingTree(alignment);
   
+  double tree_length = phylo_tree.InitializeBranchLengths(distribution_sampler.SampleFromExponential(number_of_nodes, bl_exponential_mean));
+  
+  std::cerr << "total tree length: " << tree_length << "\n";
+  
+  output_printer.PrintMessage2Out(phylo_tree.GetTreeInNewickFormat());
+  
+ /* 
   for(int i=0; i < number_of_generations; i++){
     
     std::cerr << "Select Node " << distribution_sampler.SampleFromIntUniform(0,number_of_nodes) << "\n";
     //std::cerr << "Sample BL  " << distribution_sampler.SampleBLFromUniform(bl_uniform_min, bl_uniform_max) << "\n";
     std::cerr << "Sample BL  " << distribution_sampler.SampleFromExponential(bl_exponential_mean) << "\n";
-  }
+  }*/
+  
 }

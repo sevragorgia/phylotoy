@@ -26,10 +26,10 @@ private:
    */
   
   Node* current_root;
-  float length;
+  double length;
 
   //this is a vector containing all the nodes in the tree
-  std::vector<Node*> tree_nodes; 
+  std::vector<Node*> tree_nodes;
   
   //private methods
   
@@ -38,8 +38,8 @@ private:
 public:
     Tree();
     
-    void SetLength(float length);
-    float GetLength();
+    void SetLength(double length);
+    double GetLength();
     
     void SetRoot(Node* root_node);
     Node* GetRoot();
@@ -59,4 +59,6 @@ public:
     std::vector<std::string>* CollectTreeNodesInfoIteratively();
     
     std::string GetTreeInNewickFormat();
+    
+    double InitializeBranchLengths(std::vector<double> branch_lengths);
 };
